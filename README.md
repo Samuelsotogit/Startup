@@ -1,6 +1,6 @@
 # Rizzedup
 ### Elevator Pitch
-Have you ever encountered a cute person but don't know to break the ice? Or have you ever approached that one person but then fumbled the interaction? Well, Rizzedup is here to save your game. Say goodbye to sweaty hands and shaky legs. With Rizzedup users can simply log in, see the top rated approaches, pick up lines, or jokes and try them out! Users also have the options to post their own approaches, save their favorite ones, and see other people's profiles! A notification is sent to all users when a new post has become the top rated!
+Have you ever encountered a cute person but don't know to break the ice? Or have you ever approached that one person but then fumbled the interaction? Well, Rizzedup is here to save your game. Say goodbye to sweaty hands and shaky legs. With Rizzedup users can simply log in, see the top rated approaches, pick up lines, or jokes and try them out! Users also have the options to post their own approaches, save their favorite ones, and see other people's profiles! A notification is sent to all users when a new post has become the top rated! Discover the power of charisma by using Rizzedup today.
 
 ### UI Design of Application
 
