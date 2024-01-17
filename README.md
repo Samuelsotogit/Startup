@@ -1,6 +1,6 @@
 # Rizzedup
 ### Elevator Pitch
-Have you ever encountered a cute person but don't know to break the ice? Or have you ever approached that one person but then fumbled the interaction? Well, with Rizzedup users can simply log in, see the top rated pick up lines, approaches, or jokes and try them out! Users also have the options to post their own approaches and/or images of their success!
+Have you ever encountered a cute person but don't know to break the ice? Or have you ever approached that one person but then fumbled the interaction? Well, with Rizzedup users can simply log in, see the top rated approaches, pick up lines, or jokes and try them out! Users also have the options to post their own approaches and/or images of their success!
 
 ### UI Design of Application
 
