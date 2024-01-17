@@ -2,9 +2,14 @@
 ### Elevator Pitch
 Have you ever encountered a cute person but don't know to break the ice? Or have you ever approached that one person but then fumbled the interaction? Well, with Rizzedup users can simply log in, see the top rated pick up lines, approaches, or jokes and try them out! Users also have the options to post their own approaches and/or images of their success!
 
-### Design
+### UI Design of Application
 
-![UI Design of the Rizzedup web application]()
+![landing](https://github.com/Samuelsotogit/Startup/assets/156238134/9641298d-840b-4463-8516-07e176fbb846)
+![login](https://github.com/Samuelsotogit/Startup/assets/156238134/8c7ca908-b45a-4ac4-b7a7-438da85f1005)
+![signup](https://github.com/Samuelsotogit/Startup/assets/156238134/c74e4d91-3ea0-44a6-b376-894570da07ef)
+![mainfeed](https://github.com/Samuelsotogit/Startup/assets/156238134/c133e193-9c09-47a1-a64e-1f08d3955dd1)
+![profile](https://github.com/Samuelsotogit/Startup/assets/156238134/d3f06347-c7af-45c0-816d-fa41f8bacc03)
+![aboutus](https://github.com/Samuelsotogit/Startup/assets/156238134/6651a153-cac2-409f-96bc-505735127a9c)
 
 ### Sequence Diagram between user and backend server
 
