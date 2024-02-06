@@ -36,10 +36,17 @@
         <header>
             <h1>RizzedUp</h1>
             <button class="back-button" onclick="goBack()">Go Back</button>
+            <h2>Upload a Profile Picture</h2>
+            <form action="/upload" method="post" enctype="multipart/form-data">
+              <label for="imageUpload">Upload image:</label>
+              <input type="file" id="imageUpload" name="image">
+              <input type="submit" value="upload">
+            </form>
         </header>
         <main>
-            <textarea name="saved posts" id="saved" cols="30" rows="10">Saved posts from other people</textarea>
-            <textarea name="MyPosts" id="MyPosts" cols="30" rows="10">my posts</textarea>    
+        <hr />
+          <textarea name="saved posts" id="saved" cols="30" rows="10">Saved posts from other people</textarea>
+          <textarea name="MyPosts" id="MyPosts" cols="30" rows="10">my posts</textarea>    
         </main>
     <hr />
     </main>
