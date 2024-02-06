@@ -58,12 +58,12 @@ I will use the required technologies in the following ways:
 For this deliverable I built out the structure of my application using HTML.
 
 - [x] **HTML pages** - six HTML pages that represent the landing page, the ability to login/sign up, rate posts on the main feed, see selfposts/saved posts, and the "about us" page.
-- [x] **Links** - The login page automatically links to the main feed page (Javascript will add the functionality). The main page has a rating system (Javascript will add functionality to the rating and websocket will keep the tally). Every page contains navigation links to main feed, profile/username, and "about us".
-- [x] **Text** - Each post is a textual description.
-- [x] **Third Party API** - The landing page calls a third party API to display a new joke everytime the page is refreshed.
-- [ ] **Images** - User can upload a profile picture/Images are rendered on the landing page and on the About us page.
-- [x] **DB/Login** - Input box and submit button for login. Posts are stored in and pulled from database.
-- [x] **WebSocket** - The star ratings represent the tally of realtime reviews. Notifications are pushed in real time when a new post becomes top rated.
+- [x] **Links** - The login page automatically links to the main feed page (Javascript will add the functionality). The main page has a rating system (Javascript will add functionality to the rating and websocket will keep the tally). For now, every page contains navigation links to every other page for navigation simplicity. The link "profile" switches to "username" if looked at from the main feed page and the username page itself. This is because the user's username is supposed to be displayed after log in/sign in. If the user does not log in or sign in, then they cannot access the main feed and their profile. Eventually, I will make the profile link appear only after log in/sign in. The links are there for navigation clarity.
+- [x] **Text** - Each post is a textual description. Every page contains text.
+- [x] **Third Party API** - The landing page calls a third party API to display a new joke everytime the page is refreshed. Hence the joke on landing page above the image.
+- [x] **Images** - User can upload a profile picture/Images are rendered on the landing page and on the About us page.
+- [x] **DB/Login** - Input box and submit button for login. Posts are stored in and pulled from database. This is how all posts are kept up to date on the main feed and on the profile page.
+- [x] **WebSocket** - The star ratings represent the tally of realtime reviews. Additionally, notifications are pushed in real time when a new post becomes top rated. This can be seen on the main feed and profile pages.
 
 ## CSS deliverable
 
