@@ -60,7 +60,8 @@ For this deliverable I built out the structure of my application using HTML.
 - [x] **HTML pages** - six HTML pages that represent the landing page, the ability to login/sign up, rate posts on the main feed, see selfposts/saved posts, and the "about us" page.
 - [x] **Links** - The login page automatically links to the main feed page (Javascript will add the functionality). The main page has a rating system (Javascript will add functionality to the rating and websocket will keep the tally). Every page contains navigation links to main feed, profile/username, and "about us".
 - [x] **Text** - Each post is a textual description.
-- [ ] **Images** - User can upload a profile picture.
+- [x] **Third Party API** - The landing page calls a third party API to display a new joke everytime the page is refreshed.
+- [ ] **Images** - User can upload a profile picture/Images are rendered on the landing page and on the About us page.
 - [x] **DB/Login** - Input box and submit button for login. Posts are stored in and pulled from database.
 - [x] **WebSocket** - The star ratings represent the tally of realtime reviews. Notifications are pushed in real time when a new post becomes top rated.
 
