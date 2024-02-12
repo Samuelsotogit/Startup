@@ -7,11 +7,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Startup HTML</title>
         <link rel="icon" href="favicon.ico" />
+        <link rel="stylesheet" href="style.css" />
       </head>
 </head>
 <body>
     <header>
         <nav>
+            <menu class="menu">
             <tr>
               <a href="index.html">RizzedUp</a>
             </tr>
@@ -27,12 +29,13 @@
             <tr>
                 <a href="profile.html">profile</a>
             </tr>
+        </menu>
             </nav>
             <hr />
-            <h2>RizzedUp</h2>
-            <button class="back-button" onclick="goBack()">Go Back</button>
     </header>
     <main>
+        <h2>RizzedUp</h2>
+        <button class="back-button" onclick="goBack()">Go Back</button>
         <form action="login.html" method="post">
             <label for="username">username: </label>
             <input type="text" id="username" name="username" placeholder="Enter a username" required>

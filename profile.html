@@ -6,35 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Startup HTML</title>
     <link rel="icon" href="favicon.ico" />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <header>
       <nav>
+        <menu class="menu">
         <tr>
-          <a href="index.html">RizzedUp</a>
+            <a href="index.html">RizzedUp</a>
         </tr>
-<tr>
-  <a href="about-us.html">About Us</a>
-</tr>
-  <tr>
-    <a href="login.html">login</a>
-  </tr>
-  <tr>
-    <a href="sign-in.html">Sign in</a>
-  </tr>
-  <tr>
-    <a href="main-feed.html">Feed</a>
-  </tr>
-  <tr>
-    <a href="profile.html">username</a>
-  </tr>
+        <tr>
+            <a href="about-us.html">About Us</a>
+        </tr>
+        <tr>
+            <a href="login.html">login</a>
+        </tr>
+        <tr>
+            <a href="sign-in.html">Sign in</a>
+        </tr>
+        <tr>
+            <a href="main-feed.html">Feed</a>
+        </tr>
+        <tr>
+          <a href="profile.html">Username</a>
+        </tr>
+      </menu>
 </nav>
-<p><button class="Post">Notifications</button> Jake is the new top rizzler!</p>
 <hr />
     </header>
     <main>
-        <header>
-            <h1>RizzedUp</h1>
+            <h2>RizzedUp</h2>
             <button class="back-button" onclick="goBack()">Go Back</button>
             <h2>Upload a Profile Picture</h2>
             <form action="/upload" method="post" enctype="multipart/form-data">
@@ -42,7 +43,6 @@
               <input type="file" id="imageUpload" name="image">
               <input type="submit" value="upload">
             </form>
-        </header>
         <main>
         <hr />
           <textarea name="saved posts" id="saved" cols="30" rows="10">Saved posts from other people</textarea>
