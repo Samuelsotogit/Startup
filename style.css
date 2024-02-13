@@ -116,4 +116,8 @@ main {
     background-color: rgb(237, 237, 226);
   }
 
-
+  .back-button {
+    align-items: start;
+    width: 10vh;
+    height: 5vh;
+  }
