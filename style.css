@@ -2,8 +2,40 @@ html {
     height: 100vh;
 }
 
+
+.navigation-bar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+li a {
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 5px 5px;
+  text-decoration: none;
+  justify-content: center;
+  line-height: 14px;
+}
+
+.profile-link {
+  margin-left: auto;
+}
+
+nav li:hover {
+  background-color: rgb(166, 161, 161);
+}
+
 body {
-    background-color: bisque;
+    background-color: beige;
     display: flex;
     flex-direction: column;
     margin: 0;
@@ -17,6 +49,9 @@ body {
 
 header {
   
+    display: flex;
+    align-items: center;
+
     flex: 0 50px;
     font-size: 0 20px;
     background: hsl(14, 53%, 74%);
@@ -28,11 +63,20 @@ main {
     display: flex;
     flex-direction: column;
     margin: 0;
-    height: 100vh; 
+    background-color: beige;
+     
+  }
+
+  .joke-div {
+    display: flex;
+    align-items: center;
+    margin: 5%;
+    justify-content: center;
   }
   
   .image-container {
-    position: relative; 
+    position: relative;
+    /* box-shadow: 0 3px 5px 1px rgba(0, 0, 0, 1); */
   }
 
   .image-container img {
@@ -53,7 +97,23 @@ main {
 
   .landing-page-joke {
     text-align: center;
+    /* justify-content: center; */
   }
 
+  .landing-page-buttons {
+    text-align: center;
+    right: 50%;
+    top: 50%;
+    margin-bottom: 5%;
+  }
+
+  hr {
+    display: none;
+  }
+
+  footer {
+    padding: 5px;
+    background-color: rgb(237, 237, 226);
+  }
 
 
