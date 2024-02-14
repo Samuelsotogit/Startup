@@ -14,22 +14,29 @@
     <header>
       <nav>
         <ul class="navigation-bar">
-        <li><a href="index.html">RizzedUp</a></li>
-        <li><a href="about-us.html">About Us</a></li>
+          <div class="nav-left">
+            <li><a href="index.html">RizzedUp</a></li>
+            <li><a href="about-us.html">About Us</a></li>
+          </div>
         <li><a href="login.html">login</a></li>
         <li><a href="sign-in.html">Sign in</a></li>
-        <li><a href="main-feed.html">Feed</a></li>
-        <li class="profile-link"><a href="profile.html">username</a></li>
-        </ul>
+        <div class="nav-right">
+          <li><a href="main-feed.html">Feed</a></li>
+          <li id="profile-link"><a href="profile.html">username</a></li>
+        </div>
+      </ul>
       </nav>
 <hr />
     </header>
     <main>
-      <p>Jake is the new top rizzler!</p>
-      <h1>RizzedUp</h1>
-      <hr />
-      <button class="back-button" onclick="goBack()">Go Back</button>
-      <button class="Post">Post</button>
+      <div class="feed-background">
+    <section class="main-feed-top-bar">
+      
+        <div><button class="back-button" onclick="goBack()">Go Back</button></div>
+        <div><h3 class="top-rated">Top Rated Posts</h3></div>
+        <div id="Post-button-container"><button class="Post-button">Post</button></div>
+      
+    </section>
       <p>Post from John</p>
       <fieldset>
         <label for="john_star1">1</label>
@@ -74,7 +81,22 @@
         <input type="radio" id="laura_star5" name="laura_rating" value="5" />
         <button class="Post">Save</button>
       </fieldset>
-      <img src="https://images.pexels.com/photos/949587/pexels-photo-949587.jpeg?auto=compress&cs=tinysrgb&w=600" style="width: 30%;" alt="background" >
+
+      <p>Post from Ryan</p>
+      <fieldset>
+        <label for="ryan_star1">1</label>
+        <input type="radio" id="ryan_star1" name="ryan_rating" value="1" />
+        <label for="ryan_star2">2</label>
+        <input type="radio" id="ryan_star2" name="ryan_rating" value="2" />
+        <label for="ryan_star3">3</label>
+        <input type="radio" id="ryan_star3" name="ryan_rating" value="3" />
+        <label for="ryan_star4">4</label>
+        <input type="radio" id="ryan_star4" name="ryan_rating" value="4" />
+        <label for="ryan_star5">5</label>
+        <input type="radio" id="ryan_star5" name="ryan_rating" value="5" />
+        <button class="Post">Save</button>
+      </fieldset>
+    </div>
     </main>
   </div>
     <footer>
