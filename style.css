@@ -493,6 +493,7 @@ main {
 
 .Porter fieldset {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
   padding: 2px;
@@ -500,6 +501,7 @@ main {
 
 .Ethan fieldset {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
   padding: 2px;
@@ -521,6 +523,7 @@ main {
 
 .Samuel fieldset {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
   padding: 2px;
@@ -539,3 +542,18 @@ main {
   font-family: serif;
   text-align: center;
 }
+
+@media screen and (max-width:600px) {
+  .unsave-button {
+    display: none;
+  }
+}
+
+/* @media screen and (max-width:600px) {
+  .fieldsets {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+} */
