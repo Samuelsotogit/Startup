@@ -71,12 +71,13 @@ For this deliverable I built out the structure of my application using HTML.
 
 For this deliverable I properly styled the application into its final appearance.
 
-- [ ] **Header, footer, and main content body**
-- [ ] **Navigation elements**
-- [ ] **Responsive to window resizing** -
-- [ ] **Application elements** -  
-- [ ] **Application text content** - 
-- [ ] **Application images** - 
+- [x] **Header, footer, and main content body** - I made a flex in every page to have the headers, main, and footer sections well placed. I also styled them with serif font, soothing colors, and cool background images.
+- [x] **Navigation elements** - I set up my navigation bar as a three separate divs, each with a pair of hyperlinks to each page (Note: When the Javascript is implemented, I will drop the div with the login/sign in pair from the navigation bar).
+- [x] **Responsive to window resizing** - Through media queries, I made the navigation bar responsive by changing its flex-direction, made headers and text change their font-size, and drop buttons as the screens gets tiny. 
+- [x] **Application elements** - I used bootstrap for login/sign-in buttons as well as icons from google font. The icons are in the login/sign-in page and profile page.
+- [x] **Application text content** - I used text in the about us section to describe the app. I also used text in every other page as a placeholder for websocket stuff.
+- [x] **Application images** - I used an image on my landing page, a background image for my about-us page, a background image for my section 1 of my profile page, and a background image of a single color for the rest.
+
 ## JavaScript deliverable
 
 ➡️ The following is an example of the required information for the `Startup JavaScript` deliverable
