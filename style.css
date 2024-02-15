@@ -2,6 +2,7 @@ html {
     height: 100vh;
 }
 
+
 /* Index.HTML */
 
 nav {
@@ -45,12 +46,6 @@ li a {
   line-height: 14px;
 }
 
-/* .profile-link {
-  position: absolute;
-  right: 20px;
-  justify-self: flex-end;
-} */
-
 nav li:hover {
   background-color: rgb(166, 161, 161);
 }
@@ -68,7 +63,8 @@ body {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    background-color: beige;
+    background-image: url(feedbackground.jpg);
+    background-size: cover;
 }
 
 header {
@@ -89,8 +85,6 @@ main {
     display: flex;
     flex-direction: column;
     margin: 0;
-    background-color: beige;
-     
   }
 
   .joke-div {
@@ -241,6 +235,7 @@ main {
 
 .feed-background {
   background-image: url(feedbackground.jpg);
+  background-size: cover;
   display: flex;
   flex-direction: column;
 }
@@ -303,4 +298,173 @@ main {
 
 .Post-button-container {
   justify-self: end;
+}
+
+/* Profile Page */
+
+.section1 {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 2px solid black ;
+  background-image: url(profile-dog.jpg);
+  background-size: cover;
+}
+
+
+.upper-profile-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.notifications {
+  display: flex;
+  margin: 0;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  border: 2px solid black;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.notifications p {
+  margin: 2px;
+}
+
+.photo-container {
+  margin: 0;
+  padding: 20px;
+}
+
+.upload-photo-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  border-radius: 50%;
+  margin: 10px;
+  padding: 0;
+  width: 35vh;
+  height: 35vh;
+  background-color: white;
+}
+
+.custom-file-upload {
+  display: inline-block;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.custom-file-upload input[type="file"] {
+  display: none; /* Hide the default file input */
+}
+
+.section2 {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.saved-posts-container {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 5px;
+  padding: 1em;
+  border: 2px solid black;
+  border-radius: 10px;
+  height: 30vh;
+  justify-content: space-between;
+}
+
+.my-posts-container {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 5px;
+  padding: 1em;
+  border: 2px solid black;
+  border-radius: 10px;
+  height: 30vh;
+  justify-content: space-between;
+}
+
+.Porter {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin: 0;
+  background-color: burlywood;
+  border-radius: 5px;
+} 
+
+.Ethan {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin: 0;
+  background-color: burlywood;
+  border-radius: 5px;
+}
+
+.Porter p {
+  border-bottom: 1px solid black;
+  margin: 0;
+}
+
+.Ethan p {
+  border-bottom: 1px solid black;
+  margin: 0;
+}
+
+.Porter fieldset {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px;
+}
+
+.Ethan fieldset {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px;
+}
+
+.Samuel {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin: 0;
+  background-color: burlywood;
+  border-radius: 5px;
+}
+
+.Samuel p {
+  border-bottom: 1px solid black;
+  margin: 0;
+}
+
+.Samuel fieldset {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px;
+}
+
+.middle-section {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.middle-section div {
+  width: 50%;
+  margin: 5px;
+  padding: 1em;
+  font-family: serif;
+  text-align: center;
 }
