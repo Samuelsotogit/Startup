@@ -90,7 +90,8 @@ header {
 
     flex: 0 50px;
     font-size: 0 20px;
-    background: hsl(14, 53%, 74%);
+    background: hsl(14deg 62.91% 51.6%);
+
     color: black;
 }
   
@@ -225,7 +226,6 @@ main {
   padding-left: 50px;
 }
 
-
   .lorem-ipsum {
     
     font-size: 4vh;
@@ -293,13 +293,22 @@ main {
   width: 100%;
 }
 
-.material-symbols-outlined {
-  font-size: 150px;
+#home-icon {
+  color: black;
 }
 
-.icon {
-  width: 100%;
-  height: 100%;
+#profile-icon {
+  color: black;
+}
+
+#login-icon {
+  font-size: 150px;
+  color: black;
+}
+
+#photo-icon {
+  font-size: 50px;
+  color: black;
 }
 
 /* Main Feed */
@@ -316,16 +325,20 @@ main {
   margin-bottom: 0;
   border-radius: 5px;
   padding: 1em;
-  background-color: rgba(98, 87, 87, 0.5);
-
+  background-color: rgba(255, 255, 255, 0.816);
+  border: 1px solid grey;
 }
 
 .feed-background fieldset {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   margin: 1.5em;
   margin-top: 0;
   padding: 1em;
   border-radius: 5px;
-  background-color: rgba(172, 171, 171, 0.5);
+  background-color: rgba(0, 0, 0, 0.816);
   width: 50%;
 }
 
@@ -369,6 +382,30 @@ main {
 
 .Post-button-container {
   justify-self: end;
+}
+
+.material-symbols-outlined {
+  color: white;
+}
+
+
+
+.star-rating input[type="radio"] {
+  display: none; /* Hide the radio buttons */
+}
+
+.star-rating label {
+  font-size: 20px; 
+  cursor: pointer;
+  color: gold; /* Default color for active stars */
+}
+
+.star-rating label:before {
+  content: '\2605'; /* Unicode character for a star */
+}
+
+.star-rating input[type="radio"]:checked ~ label {
+  color: gray; /* Color of inactive stars */
 }
 
 /* Profile Page */
@@ -448,7 +485,7 @@ main {
   border: 2px solid black;
   border-radius: 10px;
   height: 30vh;
-  justify-content: space-between;
+  justify-content:space-around;
 }
 
 .my-posts-container {
@@ -460,40 +497,47 @@ main {
   border: 2px solid black;
   border-radius: 10px;
   height: 30vh;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .Porter {
   display: flex;
   flex-direction: column;
-  padding: 10px;
-  margin: 0;
-  background-color: burlywood;
+  border: 1px solid rgb(0, 0, 0, 0);
   border-radius: 5px;
+  margin: 0;
+  background-color: rgba(0, 0, 0, 0.816);
 } 
 
 .Ethan {
   display: flex;
   flex-direction: column;
-  padding: 10px;
-  margin: 0;
-  background-color: burlywood;
+  border: 1px solid rgb(0, 0, 0, 0);
   border-radius: 5px;
+  margin: 0;
+  background-color: rgba(0, 0, 0, 0.816);
 }
 
 .Porter p {
-  border-bottom: 1px solid black;
+  background-color: white;
+  /* border: 1px solid grey; */
+  border-radius: 5px;
+  border-bottom: 1px solid white;
   margin: 0;
 }
 
 .Ethan p {
-  border-bottom: 1px solid black;
+  background-color: white;
+  border-radius: 5px;
+  border-bottom: 1px solid white;
   margin: 0;
 }
 
 .Porter fieldset {
   display: flex;
   flex-direction: row;
+  border: 1px solid rgb(0, 0, 0, 0);
+  border-radius: 5px;
   align-items: center;
   justify-content: space-between;
   padding: 2px;
@@ -502,6 +546,8 @@ main {
 .Ethan fieldset {
   display: flex;
   flex-direction: row;
+  border: 1px solid rgb(0, 0, 0, 0);
+  border-radius: 5px;
   align-items: center;
   justify-content: space-between;
   padding: 2px;
@@ -510,20 +556,24 @@ main {
 .Samuel {
   display: flex;
   flex-direction: column;
-  padding: 10px;
-  margin: 0;
-  background-color: burlywood;
+  border: 1px solid rgb(0, 0, 0, 0);
   border-radius: 5px;
+  margin: 0;
+  background-color: rgba(0, 0, 0, 0.816);
 }
 
 .Samuel p {
-  border-bottom: 1px solid black;
+  background-color: white;
+  border-radius: 5px;
+  border-bottom: 1px solid white;
   margin: 0;
 }
 
 .Samuel fieldset {
   display: flex;
   flex-direction: row;
+  border: 1px solid rgb(0, 0, 0, 0);
+  border-radius: 5px;
   align-items: center;
   justify-content: space-between;
   padding: 2px;
@@ -543,11 +593,11 @@ main {
   text-align: center;
 }
 
-@media screen and (max-width:600px) {
+/* @media screen and (max-width:600px) {
   .unsave-button {
     display: none;
   }
-}
+} */
 
 /* @media screen and (max-width:600px) {
   .fieldsets {
