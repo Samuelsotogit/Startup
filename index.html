@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css" /> 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="index.js"></script>
   </head>
   <body>
     <div class="flex-container">
@@ -28,7 +30,7 @@
       </div>
         <div class="nav-right">
           <li><a href="main-feed.html">Feed</a></li>
-          <li id="profile-link"><a href="profile.html">Username</a></li>
+          <li id="profile-link"><a id="username-link" href="profile.html">Username</a></li>
           <span id="profile-icon" class="material-symbols-outlined">
             account_circle
             </span>
@@ -47,8 +49,8 @@
       <p class="landing-page-joke">"I don't like shopping centers. Once you've seen one, you've seen the mall."</p>
       </div>
       <div class="landing-page-buttons">
-        <button type="landing-page-login" class="btn btn-primary btn-sm">login</button>
-        <button type="landing-page-sign-in" class="btn btn-secondary btn-sm">sign-in</button>
+        <button type="landing-page-login" class="btn btn-primary btn-sm" onclick="to_login()">login</button>
+        <button type="landing-page-sign-in" class="btn btn-secondary btn-sm" onclick="to_sign_in()">sign-in</button>
       </div>
     </main>
   </div>
@@ -67,4 +69,5 @@
     </tr>
   </table>
     </footer>
+    <script src="general.js"></script>
   </body>

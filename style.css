@@ -384,11 +384,20 @@ main {
   justify-self: end;
 }
 
-.material-symbols-outlined {
-  color: white;
+.dropdown {
+  cursor: pointer;
+  display: inline;
 }
 
+.dropdown button::after {
+  display: none;
+  /* content: ""; */
+}
 
+#menu-symbol {
+  color: black;
+  cursor: pointer;
+}
 
 .star-rating input[type="radio"] {
   display: none; /* Hide the radio buttons */
