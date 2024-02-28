@@ -29,28 +29,38 @@ nav {
   flex-direction: row;
   width: 100%;
   justify-content: space-between;
+  align-items: center;
 }
 
 .nav-left {
   margin-left: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .nav-right {
   margin-right: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .nav-center {
   justify-content: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
-nav li {
+nav div {
   display: inline-block;
   margin: 0;
   padding: 0;
   overflow: hidden;
 }
 
-li a {
+nav div a {
   display: block;
   color: black;
   text-align: center;
@@ -60,8 +70,9 @@ li a {
   line-height: 14px;
 }
 
-nav li:hover {
-  background-color: rgb(166, 161, 161);
+nav div a:hover {
+  background-color: rgb(220, 123, 123);
+  border-radius: 5px;
 }
 
 body {
@@ -295,10 +306,12 @@ main {
 
 #home-icon {
   color: black;
+  padding: 5px;
 }
 
 #profile-icon {
   color: black;
+  padding: 5px;
 }
 
 #login-icon {
@@ -385,8 +398,14 @@ main {
 }
 
 .dropdown {
+  padding: 0;
   cursor: pointer;
   display: inline;
+}
+
+.dropdown button {
+  padding: 0;
+  margin: 5px;
 }
 
 .dropdown button::after {
@@ -394,9 +413,21 @@ main {
   /* content: ""; */
 }
 
-#menu-symbol {
+#triple-bar-container {
   color: black;
+  background: hsl(14deg 62.91% 51.6%);
+  border: 0;
+}
+
+#triple-bar {
+  height: 100%;
+  width: 100%;
+  vertical-align: bottom;
+}
+
+#menu-symbol {
   cursor: pointer;
+  z-index: 1;
 }
 
 .star-rating input[type="radio"] {
@@ -417,13 +448,18 @@ main {
   color: gray; /* Color of inactive stars */
 }
 
+#save-icon {
+  color: white;
+  cursor: pointer;
+}
+
 /* Profile Page */
 
 .section1 {
   display: flex;
   flex-direction: column;
   border-bottom: 2px solid black ;
-  background-image: url(profile-dog.jpg);
+  background-image: url(sparks2.jpg);
   background-size: cover;
 }
 
