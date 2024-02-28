@@ -29,5 +29,9 @@ function create_dropdown_menu() {
 
 check_login()
 
-
+function goBack() {
+  window.history.back();
+  const back_button = document.getElementById("back-button");
+  back_button.addEventListener("click", goBack()); 
+}
 
