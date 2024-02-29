@@ -84,10 +84,10 @@ For this deliverable I properly styled the application into its final appearance
 
 For this deliverable I implemented by JavaScript so that the application works for a single user. I also added placeholders for future technology.
 
-- [ ] **login**
-- [ ] **database**
-- [ ] **WebSocket**
-- [ ] **application logic**
+- [x] **login** - I used login an authentication by requiring the user to enter in a username and a password. This is illustrated by the change of name in the 'profile' hyperlink to the display the username after login. Additionally, a drop down menu with a log out button and a notifications placeholder is created on the nav bar upon login.
+- [x] **database** - I pretended to use a database by storing the username, textcontent of posts, and rating on local storage.
+- [ ] **WebSocket** - Unable to do this properly yet.
+- [x] **application logic** - Users get to the landing page, they click on login or sign-in, then a script takes them to the respective page. Upon login, a script then saves their information, takes the user to the main feed, and gives them the ability to log out using the post login drop down menu on the top right. Upon clicking on posts, a pop up appears, text can be inputed, and after confirmation the post is displayed on the main feed and stays there even if the page is reloaded. If the user ever wants to go back to a previous page, the click on the 'previous' button.  
 
 ## Service deliverable
 
