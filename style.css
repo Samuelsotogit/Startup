@@ -357,7 +357,21 @@ main {
   padding: 1em;
   background-color: rgba(255, 255, 255, 0.816);
   border: 1px solid grey;
+  width: 50%;
 }
+
+.notification {
+  position: absolute;
+  top: 10px; /* Adjust the top position */
+  right: 10px; /* Adjust the right position */
+  background-color: #f8d7da; /* Example background color */
+  color: #721c24; /* Example text color */
+  border: 1px solid #f5c6cb; /* Example border color */
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 
 .feed-background fieldset {
   display: flex;
