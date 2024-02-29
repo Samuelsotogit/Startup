@@ -5,13 +5,14 @@ function check_login () {
     }
 }
 
-function create_dropdown_menu() {
-    // const dropdown = document.createElement("span");
-    // dropdown.textContent="menu";
-    // dropdown.className="material-symbols-outlined dropdown"
-    // dropdown.id = "dropdown-menu";
-    // parentDiv.appendChild(dropdown);
+function check_created_account () {
+  if (localStorage.getItem("email")) {
+    document.getElementById("username-link").textContent = localStorage.getItem("username");
+    create_dropdown_menu();
+    }
+}
 
+function create_dropdown_menu() {
     const parentDiv = document.getElementsByClassName("nav-right")[0];
     const div = document.createElement("div");
     div.className = "dropdown";
@@ -28,6 +29,7 @@ function create_dropdown_menu() {
 }
 
 check_login()
+check_created_account()
 
 function goBack() {
   window.history.back();
@@ -35,3 +37,9 @@ function goBack() {
   back_button.addEventListener("click", goBack()); 
 }
 
+function log_out () {
+  localStorage.removeItem("userName");
+  localStorage.removeItem("email");
+  localStorage.removeItem("Password");
+  window.location.href="index.html";
+}
