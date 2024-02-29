@@ -36,17 +36,24 @@
         </div>
       </div>
       </nav>
-<hr />
+<section class="main-feed-top-bar">
+  <div><button class="back-button" onclick="goBack()">Previous</button></div>
+  <div><h3 class="top-rated">Top Rated Posts</h3></div>
+  <div id="Post-button-container"><button class="Post-button" onclick="showPostForm()">Post</button></div>
+</section>
     </header>
     <main>
-      <div class="feed-background">
-    <section class="main-feed-top-bar">
-      
-        <div><button class="back-button" onclick="goBack()">Go Back</button></div>
-        <div><h3 class="top-rated">Top Rated Posts</h3></div>
-        <div id="Post-button-container"><button class="Post-button">Post</button></div>
-      
-    </section>
+      <!-- START -->
+    <div id="postForm">
+      <h2>Make a Post!</h2>
+      <form id="postFormContent">
+        <label for="postContent">Enter your post:</label><br>
+        <textarea id="postContent" rows="4" cols="50"></textarea><br>
+        <button type="button" onclick="create_post()">Confirm</button>
+      </form>
+    </div>
+      <!-- END -->
+      <div id="feed" class="feed-background">
       <p>Post from John</p>
       <fieldset class="star-rating">
         <label for="john_star1"></label>
@@ -62,7 +69,6 @@
         <span id="save-icon" class="material-symbols-outlined">
           bookmark
           </span>
-        <!-- <button class="Post"></button> -->
       </fieldset>
 
       <p>Post from Jake</p>

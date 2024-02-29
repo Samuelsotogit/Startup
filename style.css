@@ -25,11 +25,13 @@ nav {
   padding: 0;
   padding-left: 10px;
   padding-right: 10px;
+  padding: 8px;
   display: flex;
   flex-direction: row;
   width: 100%;
   justify-content: space-between;
   align-items: center;
+  overflow: visible;
 }
 
 .nav-left {
@@ -44,6 +46,7 @@ nav {
   display: flex;
   flex-direction: row;
   align-items: center;
+  overflow: visible;
 }
 
 .nav-center {
@@ -95,8 +98,8 @@ body {
 header {
   
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
 
     flex: 0 50px;
@@ -278,8 +281,6 @@ main {
     }
   }
 
-
-
   /* Login Page */
 
   .login-main {
@@ -307,11 +308,13 @@ main {
 #home-icon {
   color: black;
   padding: 5px;
+  cursor:default;
 }
 
 #profile-icon {
   color: black;
   padding: 5px;
+  cursor: default;
 }
 
 #login-icon {
@@ -325,6 +328,20 @@ main {
 }
 
 /* Main Feed */
+
+/* Style for the pop-up form */
+#postForm {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+}
 
 .feed-background {
   background-image: url(feedbackground.jpg);
@@ -367,8 +384,8 @@ main {
   justify-content: space-between;
   align-items: center;
   background-color: rgb(48, 47, 47);
-  margin-bottom: 30px;
   padding: 10px;
+  width: 100%;
 }
 
 .main-feed-top-bar div {
@@ -401,6 +418,8 @@ main {
   padding: 0;
   cursor: pointer;
   display: inline;
+  z-index: 1000;
+  overflow: visible;
 }
 
 .dropdown button {
@@ -427,7 +446,7 @@ main {
 
 #menu-symbol {
   cursor: pointer;
-  z-index: 1;
+  z-index: 1000;
 }
 
 .star-rating input[type="radio"] {
