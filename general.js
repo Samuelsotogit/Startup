@@ -21,13 +21,31 @@ function create_dropdown_menu() {
         menu
         </span>
   </button>
-  <ul id="menu-symbol" class="dropdown-menu">
-    <li><a class="dropdown-item" href="#">Notifications</a></li>
-    <li><button id="log_out-button" onclick="log_out()"> Log out</button></li>
+  <ul id="menu-symbol" class="dropdown-menu" style="">
+    <div class="center-x-y">
+      <li><a class="dropdown-item" href="#">Notifications</a></li>
+      <li><button id="log_out-button" onclick="log_out()"> Log out</button></li>
+    </div>
   </ul>`
   parentDiv.appendChild(div);
 }
 
+function generate_joke() {
+  fetch('https://v2.jokeapi.dev/joke/Any?blacklistFlags=religious,racist,sexist,explicit')
+    .then(response => response.json())
+    .then(data => {
+      // Once the data is fetched, update the text content of the element with class 'landing-page-joke'
+      const landingPageJokeElement = document.querySelector('.landing-page-joke');
+      const jokeText = (data.type === 'single') ? data.joke : `${data.setup} ${data.delivery}`;
+      landingPageJokeElement.textContent = jokeText;
+      console.log(data)
+    })
+    .catch(error => {
+      console.error('Error fetching joke:', error);
+    });
+}
+
+generate_joke()
 check_login()
 check_created_account()
 
@@ -43,3 +61,5 @@ function log_out () {
   localStorage.removeItem("Password");
   window.location.href="index.html";
 }
+
+
