@@ -483,6 +483,27 @@ main {
   align-items: center;
 }
 
+.post-outer-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* justify-content: ; */
+}
+
+.post-inner-container {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 70%;
+}
+
+.post-rating-container {
+  display: flex;
+  cursor: default;
+  justify-content: center;
+  position: relative;
+  flex-basis: 30%;
+}
+
 .star-rating input[type="radio"] {
   display: none; /* Hide the radio buttons */
 }
@@ -490,7 +511,7 @@ main {
 .star-rating label {
   font-size: 20px; 
   cursor: pointer;
-  color: gold; /* Default color for active stars */
+  color: gold; 
 }
 
 .star-rating label:before {
@@ -613,6 +634,7 @@ main {
   border-radius: 5px;
   border-bottom: 1px solid white;
   margin: 0;
+  padding: 8px;
 }
 
 .saved-posts fieldset {
@@ -639,6 +661,7 @@ main {
   border-radius: 5px;
   border-bottom: 1px solid white;
   margin: 0;
+  padding: 8px;
 }
 
 .my-posts fieldset {

@@ -20,12 +20,22 @@ function showPostForm() {
     document.getElementById('postForm').style.display = 'block';
   }
 
-function upload_post(post) {
+  function updateRating(postIndex, rating) {
+    let posts = JSON.parse(localStorage.getItem('posts'));
+    posts[postIndex].ratings.push(rating); // Store the new rating
+    let sum = posts[postIndex].ratings.reduce((acc, curr) => acc + curr, 0);
+    posts[postIndex].rating = sum / posts[postIndex].ratings.length; // Calculate average rating
+    localStorage.setItem('posts', JSON.stringify(posts));
+    renderPosts(posts); // Re-render posts after update
+}
+
+function upload_post(post, postIndex) {
     var postContent = document.getElementById('postContent').value;
     var newPost = document.createElement('div');
-    newPost.innerHTML = `
+    newPost.classList.add("post-outer-container");
+    newPost.innerHTML = `<div class = "post-inner-container">
     <p>Post from ${post.userName}: ${post.postContent}</p>
-    <fieldset class="star-rating">
+    <fieldset id="starRating${postIndex}" class="star-rating">
         <label for="star1"></label>
         <input type="radio" id="star1" name="rating" value="1" />
         <label for="star2"></label>
@@ -40,16 +50,36 @@ function upload_post(post) {
         bookmark
         </span>
     </fieldset>
+    </div>
+    <div class = "post-rating-container">
+    <span class = "average-rating">Rating: ${post.rating.toFixed(1)}</span><br> <!-- Display the average rating -->
+    </div>
     `;
     var feed = document.getElementById('feed');
     feed.prepend(newPost);
     document.getElementById('postForm').style.display = 'none';
-  }
+
+    // Uncheck all radio buttons (remove any pre-selection)
+    newPost.querySelectorAll('input[type="radio"]').forEach(radio => {
+        radio.checked = false;
+    });
+}
+
+// Function to render posts
+function renderPosts(posts) {
+    const feed = document.getElementById("feed");
+    feed.innerHTML = '';
+    posts.forEach((post, index) => {
+        upload_post(post, index); // Pass index to upload_post function
+    });
+}
+
 
 let posts = [];
 const postsText = localStorage.getItem('posts');
 if (postsText) {
     posts = JSON.parse(postsText);
+    posts = sortPostsByRatings(posts);
     posts.forEach(post => {
         upload_post(post);
     });
@@ -72,31 +102,38 @@ function updateRating(postIndex, rating) {
 
   // Update the local storage with the modified posts
   localStorage.setItem('posts', JSON.stringify(posts));
+
+  posts = sortPostsByRatings(posts);
+  const feed = document.getElementById("feed");
+  feed.innerHTML = '';
+  posts.forEach(post => {
+    upload_post(post);
+  });
 }
 
 // Add event listeners to stars to update the rating when clicked
 star1.addEventListener("click", () => {
-  const postIndex = 0; // Adjust this index according to your implementation
+  const postIndex = 1;
   updateRating(postIndex, 1);
 });
 
 star2.addEventListener("click", () => {
-  const postIndex = 0; // Adjust this index according to your implementation
+  const postIndex = 1; 
   updateRating(postIndex, 2);
 });
 
 star3.addEventListener("click", () => {
-  const postIndex = 0; // Adjust this index according to your implementation
+  const postIndex = 1; 
   updateRating(postIndex, 3);
 });
 
 star4.addEventListener("click", () => {
-  const postIndex = 0; // Adjust this index according to your implementation
+  const postIndex = 1; 
   updateRating(postIndex, 4);
 });
 
 star5.addEventListener("click", () => {
-  const postIndex = 0; // Adjust this index according to your implementation
+  const postIndex = 1; 
   updateRating(postIndex, 5);
 });
 
@@ -105,20 +142,8 @@ function sortPostsByRatings(posts) {
   return posts.sort((a, b) => b.num_of_ratings - a.num_of_ratings);
 }
 
-// Example usage: Sort posts based on the number of ratings (This is a sorted array of posts)
+// Sort posts based on the number of ratings (This is a sorted array of posts)
 let sortedPosts = sortPostsByRatings(posts);
-
-
-// function keep_count(event) {
-//   const count = 0;
-
-// }
-
-// star1.addEventListener("click",keep_count)
-// star2.addEventListener("click",keep_count)
-// star3.addEventListener("click",keep_count)
-// star4.addEventListener("click",keep_count)
-// star5.addEventListener("click",keep_count)
 
 async function display_notification(message) {
     const notification = document.createElement('div');
