@@ -19,6 +19,19 @@ nav {
   }
 }
 
+@media (max-width:450px) {
+  .navigation-bar {
+    display: default;
+  }
+  .upload-photo-container {
+    width: 10px;
+    height: 10px;
+  }
+  #photo-icon {
+    font-size: 8px; 
+  }
+}
+
 .navigation-bar {
   list-style-type: none;
   margin: 0;
@@ -323,7 +336,7 @@ main {
 }
 
 #photo-icon {
-  font-size: 50px;
+  font-size: 8vh;
   color: black;
 }
 
@@ -463,6 +476,13 @@ main {
   z-index: 1000;
 }
 
+.center-x-y {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .star-rating input[type="radio"] {
   display: none; /* Hide the radio buttons */
 }
@@ -533,8 +553,8 @@ main {
   border-radius: 50%;
   margin: 10px;
   padding: 0;
-  width: 35vh;
-  height: 35vh;
+  width: 30vh;
+  height: 30vh;
   background-color: white;
 }
 
@@ -578,7 +598,7 @@ main {
   justify-content: space-around;
 }
 
-.Porter {
+.saved-posts {
   display: flex;
   flex-direction: column;
   border: 1px solid rgb(0, 0, 0, 0);
@@ -587,16 +607,7 @@ main {
   background-color: rgba(0, 0, 0, 0.816);
 } 
 
-.Ethan {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid rgb(0, 0, 0, 0);
-  border-radius: 5px;
-  margin: 0;
-  background-color: rgba(0, 0, 0, 0.816);
-}
-
-.Porter p {
+.saved-posts p {
   background-color: white;
   /* border: 1px solid grey; */
   border-radius: 5px;
@@ -604,14 +615,7 @@ main {
   margin: 0;
 }
 
-.Ethan p {
-  background-color: white;
-  border-radius: 5px;
-  border-bottom: 1px solid white;
-  margin: 0;
-}
-
-.Porter fieldset {
+.saved-posts fieldset {
   display: flex;
   flex-direction: row;
   border: 1px solid rgb(0, 0, 0, 0);
@@ -621,17 +625,7 @@ main {
   padding: 2px;
 }
 
-.Ethan fieldset {
-  display: flex;
-  flex-direction: row;
-  border: 1px solid rgb(0, 0, 0, 0);
-  border-radius: 5px;
-  align-items: center;
-  justify-content: space-between;
-  padding: 2px;
-}
-
-.Samuel {
+.my-posts {
   display: flex;
   flex-direction: column;
   border: 1px solid rgb(0, 0, 0, 0);
@@ -640,14 +634,14 @@ main {
   background-color: rgba(0, 0, 0, 0.816);
 }
 
-.Samuel p {
+.my-posts p {
   background-color: white;
   border-radius: 5px;
   border-bottom: 1px solid white;
   margin: 0;
 }
 
-.Samuel fieldset {
+.my-posts fieldset {
   display: flex;
   flex-direction: row;
   border: 1px solid rgb(0, 0, 0, 0);
