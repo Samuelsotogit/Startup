@@ -37,7 +37,7 @@ function generate_joke() {
       // Once the data is fetched, update the text content of the element with class 'landing-page-joke'
       const landingPageJokeElement = document.querySelector('.landing-page-joke');
       const jokeText = (data.type === 'single') ? data.joke : `${data.setup} ${data.delivery}`;
-      landingPageJokeElement.textContent = jokeText;
+      if (landingPageJokeElement) landingPageJokeElement.textContent = jokeText;
       console.log(data)
     })
     .catch(error => {

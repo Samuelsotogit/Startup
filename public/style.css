@@ -370,7 +370,7 @@ main {
   padding: 1em;
   background-color: rgba(255, 255, 255, 0.816);
   border: 1px solid grey;
-  width: 50%;
+  width: 100%;
 }
 
 .notification {
@@ -396,7 +396,7 @@ main {
   padding: 1em;
   border-radius: 5px;
   background-color: rgba(0, 0, 0, 0.816);
-  width: 50%;
+  width: 100%;
 }
 
 .rizzedup-header h1 {

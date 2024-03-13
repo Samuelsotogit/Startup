@@ -1,51 +1,56 @@
-// Use object later to keep track of ratings and display top rated posts.
-function create_post() {
-        const userName = localStorage.getItem("userName");
-        const postContent = document.getElementById("postContent").value;
-        let posts = [];
-        const postsText = localStorage.getItem('posts');
-        if (postsText) {
-          posts = JSON.parse(postsText);
-        }
-        let post = {"userName":userName, "rating":0 , "postContent" : postContent}
-        posts.push(post)
-        localStorage.setItem('posts', JSON.stringify(posts));
-        upload_post(post);
+let posts = [];
 
-        display_notification(`${userName} made a new post!`);
+async function create_post() {
+  const userName = localStorage.getItem("userName");
+  const postContent = document.getElementById("postContent").value;
+  let post = {
+    "userName": userName,
+    "ratings": [], // Ensure that ratings array is initialized
+    "rating": 0,
+    "postContent": postContent
+    };
+    try {
+      let response = await fetch('/api/post', {
+        method: 'POST',
+        headers: {'content-type': 'application/json'},
+        body: JSON.stringify(post),
+      });
+      post = await response.json();
+
+    } catch {
+      // If there was an error then just track scores locally
+      console.log('Unable to get post');
+    }
+
+  posts.push(post)
+  localStorage.setItem('posts', JSON.stringify(posts));
+  upload_post(post,posts.length-1);
+
+  display_notification(`${userName} made a new post!`);
 }
-
 
 function showPostForm() {
     document.getElementById('postForm').style.display = 'block';
   }
 
-  function updateRating(postIndex, rating) {
-    let posts = JSON.parse(localStorage.getItem('posts'));
-    posts[postIndex].ratings.push(rating); // Store the new rating
-    let sum = posts[postIndex].ratings.reduce((acc, curr) => acc + curr, 0);
-    posts[postIndex].rating = sum / posts[postIndex].ratings.length; // Calculate average rating
-    localStorage.setItem('posts', JSON.stringify(posts));
-    renderPosts(posts); // Re-render posts after update
-}
-
-function upload_post(post, postIndex) {
-    var postContent = document.getElementById('postContent').value;
-    var newPost = document.createElement('div');
+function upload_post(post) {
+    console.log(post);
+    let postContent = document.getElementById('postContent').value;
+    let newPost = document.createElement('div');
     newPost.classList.add("post-outer-container");
     newPost.innerHTML = `<div class = "post-inner-container">
-    <p>Post from ${post.userName}: ${post.postContent}</p>
-    <fieldset id="starRating${postIndex}" class="star-rating">
+    <p class = "text-container">${post.userName}: ${post.postContent}</p>
+    <fieldset id="starRating${post.ratings}" class="star-rating" data-post-index="${post.id}">
         <label for="star1"></label>
-        <input type="radio" id="star1" name="rating" value="1" />
+        <input type="radio" id="star1" onclick = "handleStarClick(1,${post.id})" name="rating" value="1" />
         <label for="star2"></label>
-        <input type="radio" id="star2" name="rating" value="2" />
+        <input type="radio" id="star2" onclick = "handleStarClick(2,${post.id})" name="rating" value="2" />
         <label for="star3"></label>
-        <input type="radio" id="star3" name="rating" value="3" />
+        <input type="radio" id="star3" onclick = "handleStarClick(3,${post.id})" name="rating" value="3" />
         <label for="star4"></label>
-        <input type="radio" id="star4" name="rating" value="4" />
+        <input type="radio" id="star4" onclick = "handleStarClick(4,${post.id})" name="rating" value="4" />
         <label for="star5"></label>
-        <input type="radio" id="star5" name="rating" value="5" />
+        <input type="radio" id="star5" onclick = "handleStarClick(5,${post.id})" name="rating" value="5" />
         <span id="save-icon" class="material-symbols-outlined">
         bookmark
         </span>
@@ -55,7 +60,7 @@ function upload_post(post, postIndex) {
     <span class = "average-rating">Rating: ${post.rating.toFixed(1)}</span><br> <!-- Display the average rating -->
     </div>
     `;
-    var feed = document.getElementById('feed');
+    let feed = document.getElementById('feed');
     feed.prepend(newPost);
     document.getElementById('postForm').style.display = 'none';
 
@@ -65,85 +70,45 @@ function upload_post(post, postIndex) {
     });
 }
 
+
+
+// Event Listener
+async function handleStarClick(rating,id) {
+  // let star = event.target;
+  // console.log(event.target.parentElement);
+  // console.log(star.closest('.star-rating').dataset)
+  console.log(id);
+  // const id2 = star.closest('.star-rating').dataset.id;
+  // console.log(id2);
+  // const rating = parseInt(star.value);
+  // updateRating(id, rating);
+  try {
+    const results = await fetch(`/api/posts/${rating}/${id}`, {
+      method: 'PUT',
+      headers: {'content-type': 'application/json'},
+    });
+    renderPosts(await results.json());
+  } catch {
+    // If there was an error then just track scores locally
+    console.log('Unable to update rating');
+  }
+}
+
 // Function to render posts
 function renderPosts(posts) {
-    const feed = document.getElementById("feed");
-    feed.innerHTML = '';
-    posts.forEach((post, index) => {
-        upload_post(post, index); // Pass index to upload_post function
-    });
-}
-
-
-let posts = [];
-const postsText = localStorage.getItem('posts');
-if (postsText) {
-    posts = JSON.parse(postsText);
-    posts = sortPostsByRatings(posts);
-    posts.forEach(post => {
-        upload_post(post);
-    });
-}
-
-const star1 = document.getElementById("star1")
-const star2 = document.getElementById("star2")
-const star3 = document.getElementById("star3")
-const star4 = document.getElementById("star4")
-const star5 = document.getElementById("star5")
-
-// Define a function to update the rating of a post
-function updateRating(postIndex, rating) {
-  // Retrieve the posts from local storage
-  let posts = JSON.parse(localStorage.getItem('posts'));
-
-  // Update the rating and increment the number of ratings of the specified post
-  posts[postIndex].rating += rating;
-  posts[postIndex].num_of_ratings++;
-
-  // Update the local storage with the modified posts
-  localStorage.setItem('posts', JSON.stringify(posts));
-
-  posts = sortPostsByRatings(posts);
+  console.log(posts);
   const feed = document.getElementById("feed");
   feed.innerHTML = '';
-  posts.forEach(post => {
-    upload_post(post);
-  });
+  for (let i = posts.length - 1; i >= 0; i--) {
+      upload_post(posts[i]);
+  }
 }
 
-// Add event listeners to stars to update the rating when clicked
-star1.addEventListener("click", () => {
-  const postIndex = 1;
-  updateRating(postIndex, 1);
-});
 
-star2.addEventListener("click", () => {
-  const postIndex = 1; 
-  updateRating(postIndex, 2);
-});
-
-star3.addEventListener("click", () => {
-  const postIndex = 1; 
-  updateRating(postIndex, 3);
-});
-
-star4.addEventListener("click", () => {
-  const postIndex = 1; 
-  updateRating(postIndex, 4);
-});
-
-star5.addEventListener("click", () => {
-  const postIndex = 1; 
-  updateRating(postIndex, 5);
-});
-
-// Function to sort posts based on the number of ratings
-function sortPostsByRatings(posts) {
-  return posts.sort((a, b) => b.num_of_ratings - a.num_of_ratings);
-}
-
-// Sort posts based on the number of ratings (This is a sorted array of posts)
-let sortedPosts = sortPostsByRatings(posts);
+// Function to sort posts based on the rating
+// function sortPostsByRatings(posts) {
+//   return posts.sort((a, b) => b.rating - a.rating);
+// }
 
 async function display_notification(message) {
     const notification = document.createElement('div');
@@ -156,3 +121,17 @@ async function display_notification(message) {
 }
 
 
+async function load_posts() {
+try {
+  const response = await fetch('/api/post');
+  posts = await response.json();
+  localStorage.setItem('posts', JSON.stringify(scores));
+} catch {
+  // If there was an error then just track scores locally
+  console.log('Unable to get post');
+}
+    // posts = sortPostsByRatings(posts);
+    renderPosts(posts);
+}
+
+load_posts()
