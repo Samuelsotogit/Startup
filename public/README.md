@@ -95,11 +95,11 @@ For this deliverable I implemented by JavaScript so that the application works f
 
 For this deliverable I added backend endpoints that receives votes and returns the voting totals.
 
-- [ ] **Node.js/Express HTTP service**
-- [ ] **Static middleware for frontend**
-- [ ] **Calls to third party endpoints**
-- [ ] **Backend service endpoints**
-- [ ] **Frontend calls service endpoints**
+- [x] **Node.js/Express HTTP service** - Index.js has all the routs and serves up the middleware. Web Listens on port 4000. Index.js runed by node.
+- [x] **Static middleware for frontend** - Public folder contains all the front end which is served up by the middleware.
+- [x] **Calls to third party endpoints** - Fetch request to generate jokes is used for thirdparty endpoints being called.
+- [x] **Backend service endpoints** - POST, GET, and PUT are service endpoints are served up from the backend. Post adds a new post to the website. Put updates the ratings. Get returns all the posts made.
+- [x] **Frontend calls service endpoints** - Front-end calls the backend using fetch requests.
 
 ## DB/Login deliverable
 
