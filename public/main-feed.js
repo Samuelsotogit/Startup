@@ -60,17 +60,65 @@ function upload_post(post) {
     <span class = "average-rating">Rating: ${post.rating.toFixed(1)}</span><br> <!-- Display the average rating -->
     </div>
     `;
+    // let newPost = make_post(post)
     let feed = document.getElementById('feed');
     feed.prepend(newPost);
     document.getElementById('postForm').style.display = 'none';
 
     // Uncheck all radio buttons (remove any pre-selection)
+    // changed
     newPost.querySelectorAll('input[type="radio"]').forEach(radio => {
         radio.checked = false;
     });
 }
 
+function make_post(post) {
+  let newPost = document.createElement('div');
+  newPost.classList.add("post-outer-container");
 
+  let postInnerContainer = document.createElement('div');
+  postInnerContainer.classList.add("post-inner-container");
+  let textContainer = document.createElement('p');
+  textContainer.classList.add("text-container");
+  textContainer.textContent = `${post.userName}: ${post.postContent}`;
+  postInnerContainer.appendChild(textContainer);
+
+  let starRatingFieldset = document.createElement('fieldset');
+  starRatingFieldset.id = `starRating${post.ratings}`;
+  starRatingFieldset.classList.add("star-rating");
+  starRatingFieldset.setAttribute("data-post-index", post.id);
+
+  for (let i = 1; i <= 5; i++) {
+      let label = document.createElement('label');
+      label.setAttribute('for', `star${i}`);
+      let input = document.createElement('input');
+      input.type = 'radio';
+      input.id = `star${i}`;
+      input.setAttribute('name', 'rating');
+      input.value = i;
+      input.addEventListener('click', () => handleStarClick(i, post.id));
+      label.appendChild(input);
+      starRatingFieldset.appendChild(label);
+  }
+
+  let saveIcon = document.createElement('span');
+  saveIcon.id = 'save-icon';
+  saveIcon.classList.add("material-symbols-outlined");
+  saveIcon.textContent = 'bookmark';
+  starRatingFieldset.appendChild(saveIcon);
+
+  let postRatingContainer = document.createElement('div');
+  postRatingContainer.classList.add("post-rating-container");
+  let averageRatingSpan = document.createElement('span');
+  averageRatingSpan.classList.add("average-rating");
+  averageRatingSpan.textContent = `Rating: ${post.rating.toFixed(1)}`;
+  postRatingContainer.appendChild(averageRatingSpan);
+
+  newPost.appendChild(postInnerContainer);
+  newPost.appendChild(starRatingFieldset);
+  newPost.appendChild(postRatingContainer);
+  return newPost
+}
 
 // Event Listener
 async function handleStarClick(rating,id) {
@@ -99,7 +147,8 @@ function renderPosts(posts) {
   console.log(posts);
   const feed = document.getElementById("feed");
   feed.innerHTML = '';
-  for (let i = posts.length - 1; i >= 0; i--) {
+  // for (let i = posts.length - 1; i >= 0; i--) {
+    for (let i = 0;i < posts.length; i++) {
       upload_post(posts[i]);
   }
 }
