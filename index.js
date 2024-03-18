@@ -24,6 +24,7 @@ app.use((_req, res) => {
   res.sendFile('index.html', { root: 'public' });
 });
 
+
 apiRouter.post('/post', (req, res) => {
   let post = req.body
   post.id = counter;
