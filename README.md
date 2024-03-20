@@ -107,7 +107,7 @@ For this deliverable I added backend endpoints that receives votes and returns t
 
 For this deliverable I associate the votes with the logged in user. I stored the votes in the database.
 
-- [ ] **MongoDB Atlas database created**
+- [x] **MongoDB Atlas database created**
 - [ ] **Stores data in MongoDB**
 - [ ] **User registration**
 - [ ] **existing user**
