@@ -1,9 +1,9 @@
 const { MongoClient } = require('mongodb');
-const config = require('../dbConfig.json');
+const config = require('./dbConfig.json');
 const bcrypt = require('bcrypt');
 const uuid = require('uuid');
 
-async function main() {
+
   // Connect to the database cluster
   const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostname}`;
   const client = new MongoClient(url);
@@ -21,18 +21,19 @@ async function main() {
   });
 
 
-  function getUser(email) {
-    return userCollection.findOne({ email: email});
+  function getUser(username) {
+    return userCollection.findOne({ username: username});
   }
 
   function getUserByToken(token) {
     return userCollection.findOne({ token: token});
   }
 
-  async function createUser(email, password) {
+  async function createUser(username, email, password) {
     const passwordHash = await bcrypt.hash(password, 10);
     
     const user = {
+      username: username,
       email: email,
       password: passwordHash,
       token: uuid.v4(),
@@ -42,8 +43,9 @@ async function main() {
     return user;
   }
 
-  function addPost(post) {
-    postsCollection.insertOne(post);
+  async function addPost(post) {
+    await postsCollection.insertOne(post);
+    return post;
   }
   
   async function getTopRated() {
@@ -58,7 +60,7 @@ async function main() {
   const rentals = await cursor.toArray();
   rentals.forEach((i) => console.log(i));
 }
-}
+
 
 module.exports = {
   getUser,
@@ -68,4 +70,4 @@ module.exports = {
   getTopRated,
 };
 
-main().catch(console.error);
+// main().catch(console.error);
