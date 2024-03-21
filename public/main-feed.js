@@ -127,58 +127,6 @@ try {
 
 load_posts()
 
-
-// UNUSED CODE (Could be implemented later)
-
-function make_post(post) {
-  let newPost = document.createElement('div');
-  newPost.classList.add("post-outer-container");
-
-  let postInnerContainer = document.createElement('div');
-  postInnerContainer.classList.add("post-inner-container");
-  let textContainer = document.createElement('p');
-  textContainer.classList.add("text-container");
-  textContainer.textContent = `${post.userName}: ${post.postContent}`;
-  postInnerContainer.appendChild(textContainer);
-
-  let starRatingFieldset = document.createElement('fieldset');
-  starRatingFieldset.id = `starRating${post.ratings}`;
-  starRatingFieldset.classList.add("star-rating");
-  starRatingFieldset.setAttribute("data-post-index", post.id);
-
-  for (let i = 1; i <= 5; i++) {
-      let label = document.createElement('label');
-      label.setAttribute('for', `star${i}`);
-      let input = document.createElement('input');
-      input.type = 'radio';
-      input.id = `star${i}`;
-      input.setAttribute('name', 'rating');
-      input.value = i;
-      input.addEventListener('click', () => handleStarClick(i, post.id));
-      label.appendChild(input);
-      starRatingFieldset.appendChild(label);
-  }
-
-  let saveIcon = document.createElement('span');
-  saveIcon.id = 'save-icon';
-  saveIcon.classList.add("material-symbols-outlined");
-  saveIcon.textContent = 'bookmark';
-  starRatingFieldset.appendChild(saveIcon);
-
-  let postRatingContainer = document.createElement('div');
-  postRatingContainer.classList.add("post-rating-container");
-  let averageRatingSpan = document.createElement('span');
-  averageRatingSpan.classList.add("average-rating");
-  averageRatingSpan.textContent = `Rating: ${post.rating.toFixed(1)}`;
-  postRatingContainer.appendChild(averageRatingSpan);
-
-  newPost.appendChild(postInnerContainer);
-  newPost.appendChild(starRatingFieldset);
-  newPost.appendChild(postRatingContainer);
-  return newPost
-}
-
-
 {/* <fieldset id="starRating${post.ratings}" class="star-rating" data-post-index="${post.id}">
         <label for="star1"></label>
         <input type="radio" id="star1" onclick = "handleStarClick(1,${post.id})" name="rating" value="1" />
