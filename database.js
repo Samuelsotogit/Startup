@@ -9,7 +9,7 @@ async function main() {
   const client = new MongoClient(url);
   const db = client.db('rental');
   const userCollection = db.collection('user');
-  const postsCollection = db.Collection('posts');
+  const postsCollection = db.collection('posts');
 
   // Test that you can connect to the database
   (async function testConnection() {
@@ -22,7 +22,7 @@ async function main() {
 
 
   function getUser(email) {
-    return userCollection.findOne({ emial: email});
+    return userCollection.findOne({ email: email});
   }
 
   function getUserByToken(token) {
@@ -45,20 +45,12 @@ async function main() {
   function addPost(post) {
     postsCollection.insertOne(post);
   }
-
-  // Insert a document
-  const house = {
-    name: 'Beachfront views',
-    summary: 'From your bedroom to the beach, no shoes required',
-    property_type: 'Condo',
-    beds: 1,
-  };
-  await collection.insertOne(house);
-
+  
+  async function getTopRated() {
   // Query the documents
-  const query = { property_type: 'Condo', beds: { $lt: 2 } };
+  const query = { "rating": { $gt: 0, $lt: 5 } };
   const options = {
-    sort: { score: -1 },
+    post: { post: -1 },
     limit: 10,
   };
 
@@ -66,5 +58,14 @@ async function main() {
   const rentals = await cursor.toArray();
   rentals.forEach((i) => console.log(i));
 }
+}
+
+module.exports = {
+  getUser,
+  getUserByToken,
+  createUser,
+  addPost,
+  getTopRated,
+};
 
 main().catch(console.error);
