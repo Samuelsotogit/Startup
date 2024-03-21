@@ -58,7 +58,7 @@ function goBack() {
 function log_out () {
   localStorage.removeItem("userName");
   localStorage.removeItem("email");
-  localStorage.removeItem("Password");
+  // localStorage.removeItem("Password");
   window.location.href="index.html";
 }
 
