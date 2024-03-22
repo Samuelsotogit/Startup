@@ -61,6 +61,10 @@ const uuid = require('uuid');
   rentals.forEach((i) => console.log(i));
 }
 
+async function find_maxId() {
+  return postsCollection.countDocuments();
+};
+
 
 module.exports = {
   getUser,
@@ -68,6 +72,7 @@ module.exports = {
   createUser,
   addPost,
   getTopRated,
+  find_maxId,
 };
 
 // main().catch(console.error);
