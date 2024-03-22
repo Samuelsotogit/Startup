@@ -55,11 +55,21 @@ function goBack() {
   back_button.addEventListener("click", goBack()); 
 }
 
-function log_out () {
+async function log_out () {
   localStorage.removeItem("userName");
   localStorage.removeItem("email");
   // localStorage.removeItem("Password");
-  window.location.href="index.html";
+  try {
+    let response = await fetch('/api/auth/logout', {
+      method: 'DELETE',
+      headers: {'content-type': 'application/json'},
+    });
+    window.location.href="index.html";
+
+  } catch {
+    // If there was an error then just track scores locally
+    console.log('Unable to log out user');
+  }
 }
 
 

@@ -21,7 +21,7 @@ async function create_post() {
       // If there was an error then just track scores locally
       console.log('Unable to get post');
     }
-
+  console.log(post._id)
   posts.push(post)
   localStorage.setItem('posts', JSON.stringify(posts));
   upload_post(post,posts.length-1);
@@ -64,14 +64,6 @@ function upload_post(post) {
 
 // Event Listener
 async function handleStarClick(rating,id) {
-  // let star = event.target;
-  // console.log(event.target.parentElement);
-  // console.log(star.closest('.star-rating').dataset)
-  console.log(id);
-  // const id2 = star.closest('.star-rating').dataset.id;
-  // console.log(id2);
-  // const rating = parseInt(star.value);
-  // updateRating(id, rating);
   try {
     const results = await fetch(`/api/posts/${rating}/${id}`, {
       method: 'PUT',
@@ -127,18 +119,3 @@ try {
 
 load_posts()
 
-{/* <fieldset id="starRating${post.ratings}" class="star-rating" data-post-index="${post.id}">
-        <label for="star1"></label>
-        <input type="radio" id="star1" onclick = "handleStarClick(1,${post.id})" name="rating" value="1" />
-        <label for="star2"></label>
-        <input type="radio" id="star2" onclick = "handleStarClick(2,${post.id})" name="rating" value="2" />
-        <label for="star3"></label>
-        <input type="radio" id="star3" onclick = "handleStarClick(3,${post.id})" name="rating" value="3" />
-        <label for="star4"></label>
-        <input type="radio" id="star4" onclick = "handleStarClick(4,${post.id})" name="rating" value="4" />
-        <label for="star5"></label>
-        <input type="radio" id="star5" onclick = "handleStarClick(5,${post.id})" name="rating" value="5" />
-        <span id="save-icon" class="material-symbols-outlined">
-        bookmark
-        </span>
-    </fieldset> */}

@@ -8,5 +8,21 @@ async function login() {
     }
     localStorage.setItem('userName', nameEl.value);
     // localStorage.setItem('Password', passwordEl.value);
-      window.location.href="main-feed.html";
+      try {
+        let user = {
+            username: nameEl.value,
+            password: passwordEl.value
+        }
+        let response = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: {'content-type': 'application/json'},
+          body: JSON.stringify(user),
+        });
+        user = await response.json();
+        window.location.href="main-feed.html";
+
+      } catch {
+        // If there was an error then just track scores locally
+        console.log('Unable to find user');
+      }
 }
