@@ -120,7 +120,10 @@ secureApiRouter.get('/scores', async (req, res) => {
 
 // SubmitScore
 secureApiRouter.post('/post', async (req, res) => {
+  let max_id = await DB.find_maxId();
   let post = req.body;
+  post.id = await max_id+1;
+  // max_id+=1;
   // const post = { ...req.body, ip: req.ip };
   let updatedPost = await DB.addPost(post);
   console.log(updatedPost);
@@ -143,21 +146,6 @@ let posts = [];
 let counter = 0;
 
 function updateRating(id, rating) {
-      // posts.forEach((post) => {
-      //   console.log(post)
-      //   console.log(id)
-      //   if (post.id == id) {
-      //     console.log(post);
-      //     post.ratings.push(rating)
-      //     let sum = post.ratings.reduce((acc, curr) => acc + curr, 0);
-      //     post.rating = sum/post.ratings.length;
-      //     posts = posts.sort((a, b) => b.rating - a.rating);
-      //   }
-      // });
-  // console.log('posts:', posts); // Log the posts array
-  // console.log('id:', id); // Log the id
-  // console.log('posts[id]:', posts[id]); // Log the post at the specified index
-  // console.log('post[id].ratings:', posts[id].ratings)
   if (posts[id]) {
       // Ensure the ratings array exists for the post
       if (!posts[id].hasOwnProperty("ratings")) {
