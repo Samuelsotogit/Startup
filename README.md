@@ -107,12 +107,12 @@ For this deliverable I added backend endpoints that receives votes and returns t
 
 For this deliverable I associate the votes with the logged in user. I stored the votes in the database.
 
-- [x] **MongoDB Atlas database created**
-- [ ] **Stores data in MongoDB**
-- [ ] **User registration**
-- [ ] **existing user**
-- [ ] **Use MongoDB to store credentials**
-- [ ] **Restricts functionality**
+- [x] **MongoDB Atlas database created** - Database is created with its needed collections.
+- [x] **Stores data in MongoDB** - User data and post data is stored in their respective collections inside the database.
+- [x] **User registration** - Users can create a new account.
+- [x] **existing user** - Existing users must login (Can't create an existing account).
+- [x] **Use MongoDB to store credentials** - MongoDb stores username, email, password, and userID to authenticate users.
+- [x] **Restricts functionality** - Only existing users can login in through their credentials and access the app's functionality.
 
 ## WebSocket deliverable
 
