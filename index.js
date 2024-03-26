@@ -71,14 +71,8 @@ apiRouter.post('/auth/create', async (req, res) => {
 });
 
 // GetAuth token for the provided credentials
-// Maybe add an if statement to check if user has an existing email. If not, promt them to create an account.
 apiRouter.post('/auth/login', async (req, res) => {
   const user = await DB.getUser(req.body.username);
-  const emailExists = await DB.emailExists(req.body.email);
-  if (!emailExists) {
-    res.status(401).send({ msg: 'Email does not exist. Please create an account.' });
-    return;
-  }
 
   if (user) {
     if (await bcrypt.compare(req.body.password, user.password)) {
@@ -89,7 +83,6 @@ apiRouter.post('/auth/login', async (req, res) => {
   }
   res.status(401).send({ msg: 'Unauthorized' });
 });
-
 
 // DeleteAuth token if stored in cookie
 apiRouter.delete('/auth/logout', (_req, res) => {
@@ -190,4 +183,14 @@ function calculateAverage(numbers) {
   }
   
   return sum / numbers.length;
+}
+
+async function alertMessage(message) {
+  let alert = document.createElement('div');
+  alert.classList.add('alert');
+  alert.textContent = message;
+  loginPage.prepend(alert);
+  setTimeout(() => {
+      alert.remove();
+  }, 10000); 
 }

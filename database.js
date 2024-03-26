@@ -25,6 +25,12 @@ const uuid = require('uuid');
     return userCollection.findOne({ username: username});
   }
 
+  // I created this function to retrieve the email associated with the given username entered upon login.
+  function emailExists(email) {
+    return userCollection.findOne({ email: email });
+  }
+  
+
   function getUserByToken(token) {
     return userCollection.findOne({ token: token});
   }
