@@ -2,6 +2,7 @@ const { MongoClient } = require('mongodb');
 const config = require('./dbConfig.json');
 const bcrypt = require('bcrypt');
 const uuid = require('uuid');
+const ObjectId = require('mongodb').ObjectId
 
 
   // Connect to the database cluster
@@ -54,17 +55,26 @@ const uuid = require('uuid');
     return post;
   }
   
-  async function getTopRated() {
+  async function getPost() {
   // Query the documents
   const query = { "rating": { $gt: 0, $lt: 5 } };
   const options = {
     post: { post: -1 },
-    limit: 10,
+    limit: 1,
   };
+    // const cursor = collection.find(query, options);
+  // const rentals = await cursor.toArray();
+  // rentals.forEach((i) => console.log(i));
+};
 
-  const cursor = collection.find(query, options);
-  const rentals = await cursor.toArray();
-  rentals.forEach((i) => console.log(i));
+async function getAllPost() {
+  const posts_array = await postsCollection.find().toArray()
+  return posts_array
+};
+
+async function updatePost(id, rating) {
+  rating = parseInt(rating);
+  await postsCollection.updateOne({'_id': ObjectId(id) },{$set:{rating}})
 }
 
 async function find_maxId() {
@@ -77,8 +87,10 @@ module.exports = {
   getUserByToken,
   createUser,
   addPost,
-  getTopRated,
+  getPost,
   find_maxId,
+  getAllPost,
+  updatePost,
 };
 
 // main().catch(console.error);
