@@ -23,7 +23,8 @@ var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
 // GetPosts
-apiRouter.get('/post', (_req, res) => {
+apiRouter.get('/post', async (_req, res) => {
+  const posts = await DB.getAllPost();
   res.send(posts);
 });
 
@@ -43,8 +44,13 @@ app.use((_req, res) => {
 //   // res.sendStatus(200)
 // });
 
-apiRouter.put('/posts/:rating/:id', (req, res) => {
-  updateRating(req.params.id,req.params.rating)
+
+// Gets the rating from MongoDB, uses it to give the right post an updated rating.
+
+apiRouter.put('/posts/:rating/:id', async (req, res) => {
+  await DB.updatePost(req.params.id,req.params.rating)
+  let posts = await DB.getAllPost();
+  // updateRating(posts, req.params.post,req.params.rating)
   res.send(posts)
 });
 
@@ -54,7 +60,6 @@ app.listen(port, () => {
 
 // CreateAuth token for a new user
 
-// If Statement not working
 apiRouter.post('/auth/create', async (req, res) => {
   if (await DB.getUser(req.body.username)) {
     res.status(409).send({ msg: 'Existing user' });
@@ -121,15 +126,13 @@ secureApiRouter.get('/scores', async (req, res) => {
   res.send(scores);
 });
 
-// SubmitScore
+// SubmitPost (Create a Post)
 secureApiRouter.post('/post', async (req, res) => {
   let max_id = await DB.find_maxId();
   let post = req.body;
   post.id = await max_id+1;
-  // max_id+=1;
-  // const post = { ...req.body, ip: req.ip };
   let updatedPost = await DB.addPost(post);
-  console.log(updatedPost);
+  // console.log(updatedPost);
   res.send(updatedPost);
 });
 
@@ -144,11 +147,11 @@ function setAuthCookie(res, authToken) {
 
 // JS
 
-let posts = [];
+// let posts = [];
 
-let counter = 0;
+// let counter = 0;
 
-function updateRating(id, rating) {
+function updateRating(posts, id, rating) {
   if (posts[id]) {
       // Ensure the ratings array exists for the post
       if (!posts[id].hasOwnProperty("ratings")) {
@@ -156,12 +159,8 @@ function updateRating(id, rating) {
       }
       posts[id].ratings.push(rating); // Store the new rating
       console.log('posts[id]:', posts[id]);
-      // let sum = posts[id].ratings.reduce((acc, curr) => acc + curr, 0);
-      // posts[id].rating = sum / posts[id].ratings.length; 
       posts[id].rating = calculateAverage(posts[id].ratings)// Calculate average rating
       console.log(posts[id].rating)
-      // posts = posts.sort((a, b) => b.rating - a.rating);
-      // localStorage.setItem('posts', JSON.stringify(posts));
       return posts; // Re-render posts after update
   } 
       // console.error('Invalid id:', id); // Log an error if id is out of range
