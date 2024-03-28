@@ -33,26 +33,27 @@ app.use((_req, res) => {
   res.sendFile('index.html', { root: 'public' });
 });
 
-
-// apiRouter.post('/post', (req, res) => {
-//   let post = req.body
-//   post.id = counter;
-//   post.ratings = [];
-//   counter++;
-//   posts.push(post)
-//   res.send(post)
-//   // res.sendStatus(200)
-// });
-
-
 // Gets the rating from MongoDB, uses it to give the right post an updated rating.
 
 apiRouter.put('/posts/:rating/:id', async (req, res) => {
-  await DB.updatePost(req.params.id,req.params.rating)
-  let posts = await DB.getAllPost();
-  // updateRating(posts, req.params.post,req.params.rating)
-  res.send(posts)
+  try {
+      const postId = req.params.id;
+      const newRating = parseInt(req.params.rating);
+
+      // Update the post with the new rating
+      const updatedPost = await DB.updatePost(postId, newRating);
+
+      // Retrieve all posts (assuming this function retrieves all posts)
+      const posts = await DB.getAllPost();
+
+      // Send the updated posts back as the response
+      res.json(posts);
+  } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Internal server error' });
+  }
 });
+
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
@@ -132,7 +133,6 @@ secureApiRouter.post('/post', async (req, res) => {
   let post = req.body;
   post.id = await max_id+1;
   let updatedPost = await DB.addPost(post);
-  // console.log(updatedPost);
   res.send(updatedPost);
 });
 
@@ -147,10 +147,6 @@ function setAuthCookie(res, authToken) {
 
 // JS
 
-// let posts = [];
-
-// let counter = 0;
-
 function updateRating(posts, id, rating) {
   if (posts[id]) {
       // Ensure the ratings array exists for the post
@@ -158,12 +154,9 @@ function updateRating(posts, id, rating) {
         posts[id].ratings = []; // Initialize ratings array if it doesn't exist
       }
       posts[id].ratings.push(rating); // Store the new rating
-      console.log('posts[id]:', posts[id]);
       posts[id].rating = calculateAverage(posts[id].ratings)// Calculate average rating
-      console.log(posts[id].rating)
       return posts; // Re-render posts after update
   } 
-      // console.error('Invalid id:', id); // Log an error if id is out of range
 }
 
 function calculateAverage(numbers) {
@@ -184,12 +177,12 @@ function calculateAverage(numbers) {
   return sum / numbers.length;
 }
 
-async function alertMessage(message) {
-  let alert = document.createElement('div');
-  alert.classList.add('alert');
-  alert.textContent = message;
-  loginPage.prepend(alert);
-  setTimeout(() => {
-      alert.remove();
-  }, 10000); 
-}
+// async function alertMessage(message) {
+//   let alert = document.createElement('div');
+//   alert.classList.add('alert');
+//   alert.textContent = message;
+//   loginPage.prepend(alert);
+//   setTimeout(() => {
+//       alert.remove();
+//   }, 10000); 
+// }
