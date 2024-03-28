@@ -105,7 +105,7 @@ For this deliverable I added backend endpoints that receives votes and returns t
 
 ➡️ The following is an example of the required information for the `Startup DB/Login` deliverable
 
-For this deliverable I associate the votes with the logged in user. I stored the votes in the database.
+For this deliverable I associate the posts with the logged in user. I stored the posts in the database.
 
 - [x] **MongoDB Atlas database created** - Database is created with its needed collections.
 - [x] **Stores data in MongoDB** - User data and post data is stored in their respective collections inside the database.
@@ -118,7 +118,7 @@ For this deliverable I associate the votes with the logged in user. I stored the
 
 ➡️ The following is an example of the required information for the `Startup WebSocket` deliverable
 
-For this deliverable I used webSocket to update the votes on the frontend in realtime.
+For this deliverable I used webSocket to update the ratings on the frontend in realtime.
 
 - [ ] **Backend listens for WebSocket connection**
 - [ ] **Frontend makes WebSocket connection**

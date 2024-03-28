@@ -7,6 +7,7 @@ async function create_post() {
     "userName": userName,
     "ratings": [], // Ensure that ratings array is initialized
     "rating": 0,
+    // "average_rating": {},
     "postContent": postContent
     };
     try {
@@ -21,7 +22,6 @@ async function create_post() {
       // If there was an error then just track scores locally
       console.log('Unable to get post');
     }
-  console.log(post._id)
   posts.push(post)
   localStorage.setItem('posts', JSON.stringify(posts));
   upload_post(post,posts.length-1);
@@ -33,21 +33,21 @@ function showPostForm() {
     document.getElementById('postForm').style.display = 'block';
   }
 
-function upload_post(post) {
+  function upload_post(post) {
     console.log(post);
     let postContent = document.getElementById('postContent').value;
     let newPost = document.createElement('div');
     newPost.classList.add("post-outer-container");
     newPost.innerHTML = `<div class = "post-inner-container">
     <p class = "text-container">${post.userName}: ${post.postContent}</p>
-    <div onclick="handleStarClick(1,${post.id})"> ${post.id} 1 star</div>
-    <div onclick="handleStarClick(2,${post.id})"> ${post.id} 2 star</div>
-    <div onclick="handleStarClick(3,${post.id})"> ${post.id} 3 star</div>
-    <div onclick="handleStarClick(4,${post.id})"> ${post.id} 4 star</div>
-    <div onclick="handleStarClick(5,${post.id})"> ${post.id} 5 star</div>
+    <div onclick="handleStarClick(1,'${post._id}')"> '${post._id}' 1 star</div>
+    <div onclick="handleStarClick(2,'${post._id}')"> '${post._id}' 2 star</div>
+    <div onclick="handleStarClick(3,'${post._id}')"> '${post._id}' 3 star</div>
+    <div onclick="handleStarClick(4,'${post._id}')"> '${post._id}' 4 star</div>
+    <div onclick="handleStarClick(5,'${post._id}')"> '${post._id}' 5 star</div>
     </div>
     <div class = "post-rating-container">
-    <span class = "average-rating">Rating: ${post.rating.toFixed(1)}</span><br> <!-- Display the average rating -->
+    <span class = "average-rating">Rating: ${typeof post.rating === 'number' ? post.rating.toFixed(1) : 'N/A'}</span><br> <!-- Display the average rating -->
     </div>
     `;
     // let newPost = make_post(post)
@@ -61,6 +61,7 @@ function upload_post(post) {
         radio.checked = false;
     });
 }
+
 
 // Event Listener
 async function handleStarClick(rating,id) {
@@ -78,7 +79,6 @@ async function handleStarClick(rating,id) {
 
 // Function to render posts
 function renderPosts(posts) {
-  console.log(posts);
   const feed = document.getElementById("feed");
   feed.innerHTML = '';
   // for (let i = posts.length - 1; i >= 0; i--) {
