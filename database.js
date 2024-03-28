@@ -72,10 +72,52 @@ async function getAllPost() {
   return posts_array
 };
 
-async function updatePost(id, rating) {
-  rating = parseInt(rating);
-  await postsCollection.updateOne({'_id': ObjectId(id) },{$set:{rating}})
-}
+// async function updatePost(id, rating) {
+//   rating = parseInt(rating);
+//   // await postsCollection.updateOne({'_id': ObjectId(id) },{$set:{rating}})
+//   await postsCollection.updateOne(
+//     { '_id': ObjectId(id) },
+//     { 
+//         $push: { 'ratings': rating }, // Append the new rating to the 'ratings' array
+//         $set: { 'rating': { $avg: ['$rating', rating] } } // Calculate the average rating
+//     }
+// );
+// }
+
+const updatePost = async (postId, newRating) => {
+  try {
+      // Find the post by its ObjectId
+      const post = await postsCollection.findOne({ '_id': ObjectId(postId) });
+      if (!post) {
+          throw new Error('Post not found');
+      }
+
+      // Push the new rating into the 'ratings' array
+      post.ratings.push(newRating);
+
+      // Calculate the average rating
+      const sum = post.ratings.reduce((acc, curr) => acc + curr, 0);
+      const averageRating = sum / post.ratings.length;
+
+      // Update the 'rating' field of the post
+      post.rating = averageRating;
+
+      // Update the post in the database
+      await postsCollection.updateOne(
+          { '_id': ObjectId(postId) },
+          { $set: { 'ratings': post.ratings, 'rating': averageRating } }
+      );
+
+      // Return the updated post
+      return post;
+  } catch (error) {
+      throw error; // Handle the error appropriately
+  }
+};
+
+module.exports = { updatePost };
+
+
 
 async function find_maxId() {
   return postsCollection.countDocuments();
