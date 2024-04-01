@@ -177,6 +177,8 @@ function calculateAverage(numbers) {
   return sum / numbers.length;
 }
 
+peerProxy(httpService);
+
 // async function alertMessage(message) {
 //   let alert = document.createElement('div');
 //   alert.classList.add('alert');
