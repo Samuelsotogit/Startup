@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 const express = require('express');
 const app = express();
 const DB = require('./database.js');
+const { peerProxy } = require('./peerProxy.js');
 
 const authCookieName = 'token';
 
@@ -55,9 +56,9 @@ apiRouter.put('/posts/:rating/:id', async (req, res) => {
 });
 
 
-app.listen(port, () => {
-  console.log(`Listening on port ${port}`);
-});
+// app.listen(port, () => {
+//   console.log(`Listening on port ${port}`);
+// });
 
 // CreateAuth token for a new user
 
@@ -176,6 +177,10 @@ function calculateAverage(numbers) {
   
   return sum / numbers.length;
 }
+
+const httpService = app.listen(port, () => {
+  console.log(`Listening on port ${port}`);
+});
 
 peerProxy(httpService);
 
