@@ -1,7 +1,7 @@
 let posts = [];
-
+let socket;
+const userName = localStorage.getItem("userName");
 async function create_post() {
-  const userName = localStorage.getItem("userName");
   const postContent = document.getElementById("postContent").value;
   let post = {
     "userName": userName,
@@ -26,7 +26,8 @@ async function create_post() {
   localStorage.setItem('posts', JSON.stringify(posts));
   upload_post(post,posts.length-1);
 
-  display_notification(`${userName} made a new post!`);
+  // display_notification(`${userName} made a new post!`);
+  broadcastEvent(userName, post_event, {});
 }
 
 function showPostForm() {
@@ -62,7 +63,6 @@ function showPostForm() {
     });
 }
 
-
 // Event Listener
 async function handleStarClick(rating,id) {
   try {
@@ -87,11 +87,35 @@ function renderPosts(posts) {
   }
 }
 
-
 // Function to sort posts based on the rating
 function sortPostsByRatings(posts) {
   return posts.sort((a, b) => a.rating - b.rating);
 }
+
+  // Functionality for peer communication using WebSocket
+
+const post_event = "post-event";
+function configureWebSocket() {
+  const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
+  socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
+  // socket.onopen = (event) => {
+  //   console.log("Websocket Opened");
+  // };
+  // socket.onclose = (event) => {
+  //   console.log("Websocket Closed");
+  // };
+  socket.onmessage = async (event) => {
+    const msg = JSON.parse(await event.data.text());
+      display_notification(`${msg.from} made a new post!`);
+  };
+}
+
+function broadcastEvent(from) {
+  const event = {
+    from: from,
+  };
+  socket.send(JSON.stringify(event));
+};
 
 async function display_notification(message) {
     const notification = document.createElement('div');
@@ -102,7 +126,6 @@ async function display_notification(message) {
         notification.remove();
     }, 15000); 
 }
-
 
 async function load_posts() {
 try {
@@ -119,3 +142,4 @@ try {
 
 load_posts()
 
+configureWebSocket();
