@@ -27,7 +27,7 @@ async function create_post() {
   upload_post(post,posts.length-1);
 
   // display_notification(`${userName} made a new post!`);
-  broadcastEvent(userName, post_event, {});
+  broadcastEvent(userName);
 }
 
 function showPostForm() {

@@ -23,6 +23,7 @@ async function login() {
   if (response.ok) {
     localStorage.setItem('userName', user.username);
     window.location.href="main-feed.html";}
+    // configureWebSocket()
 }
 
 

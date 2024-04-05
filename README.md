@@ -27,19 +27,17 @@ Have you ever encountered a cute person but don't know to break the ice? Or have
 
 I will use the required technologies in the following ways:
 
-- **HTML:** - Build application structure. Six HTML pages for:
-  - Landing Page with hyperlinks to "login/sign up" pages, "profile" page, and "about us" page.
+- **HTML:** - Build application structure. Five HTML pages for:
+  - Landing Page with hyperlinks to "login/sign up" pages, and "about us" page.
   - Login page with hyperlink to the previous page
   - Sign up page hyperlink to the previous page
-  - Main feed page for rating and posting with hyperlinks to "profile" page, and "about us" page.
-  - Profile page with self-posts and saved posts with a notification tab
+  - Main feed page for rating and posting with hyperlink to "about us" page.
   - About us page with a description of the app 
 - **CSS:** - Application asthetics, proper contrast of colors, well organized navigation tabs.
 - **Javascript:** - Functionality of:
   - Log in/sign up
   - Navigation
-  - Rating, posting, and saving posts
-  - Uploading profile picture
+  - Rating and posting
   - Backend endpoint calls
 - **Web Service:** - Backend service with endpoints for:
   - Log in/Sign up
@@ -47,7 +45,7 @@ I will use the required technologies in the following ways:
   - retrieving ratings
   - Making posts
 - **Authentication/Database Persistance:**
-  - Store user credentials, ratings, posts, and notifications. Users can only rate, posts, and save posts if authenticated.
+  - Store user credentials, ratings, posts, and notifications. Users can only rate and post if authenticated.
 - **Web Socket:** - As each user makes a post, or a post obtains the highest rating, notifications are sent to each user.
 - **React:** - Application ported to use the React web framework.
 
@@ -57,13 +55,13 @@ I will use the required technologies in the following ways:
 
 For this deliverable I built out the structure of my application using HTML.
 
-- [x] **HTML pages** - six HTML pages that represent the landing page, the ability to login/sign up, rate posts on the main feed, see selfposts/saved posts, and the "about us" page.
-- [x] **Links** - The login page automatically links to the main feed page (Javascript will add the functionality). The main page has a rating system (Javascript will add functionality to the rating and websocket will keep the tally). For now, every page contains navigation links to every other page for navigation simplicity. The link "profile" switches to "username" if looked at from the main feed page and the username page itself. This is because the user's username is supposed to be displayed after log in/sign in. If the user does not log in or sign in, then they cannot access the main feed and their profile. Eventually, I will make the profile link appear only after log in/sign in. The links are there for navigation clarity.
+- [x] **HTML pages** - Five HTML pages that represent the landing page, the ability to login/sign up, rate posts on the main feed, and the "about us" page.
+- [x] **Links** - The login page automatically links to the main feed page (Javascript will add the functionality). The main page has a rating system (Javascript will add functionality to the rating and websocket will keep the tally). For now, every page contains navigation links to every other page for navigation simplicity. The link "profile" switches to "username" if looked at from the main feed page and the username page itself. This is because the user's username is supposed to be displayed after log in/sign in. If the user does not log in or sign in, then they cannot access the main feed. Eventually, I will make the profile link appear only after log in/sign in. The links are there for navigation clarity.
 - [x] **Text** - Each post is a textual description. Every page contains text.
 - [x] **Third Party API** - The landing page calls a third party API to display a new joke everytime the page is refreshed. Hence the joke on landing page above the image.
-- [x] **Images** - User can upload a profile picture/Images are rendered on the landing page and on the About us page.
-- [x] **DB/Login** - Input box and submit button for login. Posts are stored in and pulled from database. This is how all posts are kept up to date on the main feed and on the profile page.
-- [x] **WebSocket** - The star ratings represent the tally of realtime reviews. Additionally, notifications are pushed in real time when a new post becomes top rated. This can be seen on the main feed and profile pages.
+- [x] **Images** - Images are rendered on the landing page and on the About us page.
+- [x] **DB/Login** - Input box and submit button for login. Posts are stored in and pulled from database. This is how all posts are kept up to date on the main feed.
+- [x] **WebSocket** - The star ratings represent the tally of realtime reviews. Additionally, notifications are pushed in real time when a new post becomes top rated. This can be seen on the main feed.
 
 ## CSS deliverable
 
@@ -76,7 +74,7 @@ For this deliverable I properly styled the application into its final appearance
 - [x] **Responsive to window resizing** - Through media queries, I made the navigation bar responsive by changing its flex-direction, made headers and text change their font-size, and drop buttons as the screens gets tiny. 
 - [x] **Application elements** - I used bootstrap for login/sign-in buttons as well as icons from google font. The icons are in the login/sign-in page and profile page.
 - [x] **Application text content** - I used text in the about us section to describe the app. I also used text in every other page as a placeholder for websocket stuff.
-- [x] **Application images** - I used an image on my landing page, a background image for my about-us page, a background image for my section 1 of my profile page, and a background image of a single color for the rest.
+- [x] **Application images** - I used an image on my landing page, a background image for my about-us page, and a background image of a single color for the rest.
 
 ## JavaScript deliverable
 
@@ -120,10 +118,10 @@ For this deliverable I associate the posts with the logged in user. I stored the
 
 For this deliverable I used webSocket to update the ratings on the frontend in realtime.
 
-- [ ] **Backend listens for WebSocket connection**
-- [ ] **Frontend makes WebSocket connection**
-- [ ] **Data sent over WebSocket connection**
-- [ ] **WebSocket data displayed** 
+- [x] **Backend listens for WebSocket connection** - The backend updates the hhtp connection to a websocket one correctly.
+- [x] **Frontend makes WebSocket connection** - The frontend connects over websocket correctly through the boradcast event function.
+- [x] **Data sent over WebSocket connection** - After posting, the frontend (main-feed.js) sends the username to the configureWebsocket function.
+- [x] **WebSocket data displayed** - A notification is displayed to every user after anyone makes a post.
 
 ## React deliverable
 
