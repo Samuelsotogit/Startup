@@ -41,11 +41,13 @@ function showPostForm() {
     newPost.classList.add("post-outer-container");
     newPost.innerHTML = `<div class = "post-inner-container">
     <p class = "text-container">${post.userName}: ${post.postContent}</p>
-    <div onclick="handleStarClick(1,'${post._id}')"> '${post._id}' 1 star</div>
-    <div onclick="handleStarClick(2,'${post._id}')"> '${post._id}' 2 star</div>
-    <div onclick="handleStarClick(3,'${post._id}')"> '${post._id}' 3 star</div>
-    <div onclick="handleStarClick(4,'${post._id}')"> '${post._id}' 4 star</div>
-    <div onclick="handleStarClick(5,'${post._id}')"> '${post._id}' 5 star</div>
+    <div class = "stars-container" data-post-id="${post._id}">
+    <div onclick="handleStarClick(1,'${post._id}')"> </div>
+    <div onclick="handleStarClick(2,'${post._id}')"> </div>
+    <div onclick="handleStarClick(3,'${post._id}')"> </div>
+    <div onclick="handleStarClick(4,'${post._id}')"> </div>
+    <div onclick="handleStarClick(5,'${post._id}')"> </div>
+    </div>
     </div>
     <div class = "post-rating-container">
     <span class = "average-rating">Rating: ${typeof post.rating === 'number' ? post.rating.toFixed(1) : 'N/A'}</span><br> <!-- Display the average rating -->
@@ -71,10 +73,22 @@ async function handleStarClick(rating,id) {
       headers: {'content-type': 'application/json'},
     });
     renderPosts(await results.json());
+    markClickedStars(id, rating);
   } catch {
     // If there was an error then just track scores locally
     console.log('Unable to update rating');
   }
+}
+
+function markClickedStars(postId, rating) {
+  const stars = document.querySelectorAll(`.stars-container[data-post-id="${postId}"] > div`);
+  stars.forEach((star, index) => {
+    if (index < rating) {
+      star.classList.add('clicked');
+    } else {
+      star.classList.remove('clicked');
+    }
+  });
 }
 
 // Function to render posts
