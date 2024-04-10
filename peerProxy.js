@@ -16,7 +16,7 @@ function peerProxy(httpServer) {
   let connections = [];
 
   wss.on('connection', (ws) => {
-    console.log("websocket connected")
+    // console.log("websocket connected")
     const connection = { id: uuid.v4(), alive: true, ws: ws };
     connections.push(connection);
 
@@ -31,7 +31,7 @@ function peerProxy(httpServer) {
 
     // Remove the closed connection so we don't try to forward anymore
     ws.on('close', () => {
-      console.log("websocket closed")
+      // console.log("websocket closed")
       const pos = connections.findIndex((o, i) => o.id === connection.id);
 
       if (pos >= 0) {
