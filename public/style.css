@@ -91,6 +91,10 @@ nav div a:hover {
   border-radius: 5px;
 }
 
+#username-link {
+  cursor: default;
+}
+
 body {
     background-color: beige;
     display: flex;
@@ -504,28 +508,40 @@ main {
   flex-basis: 30%;
 }
 
-.star-rating input[type="radio"] {
+/* .star-rating input[type="radio"] {
   display: none; /* Hide the radio buttons */
-}
+/* } */
 
-.star-rating label {
+.stars-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
   font-size: 20px; 
-  cursor: pointer;
   color: gold; 
 }
 
-.star-rating label:before {
+.stars-container > div {
+  cursor: pointer; /* Set cursor to pointer on hover over stars */
+}
+
+.stars-container > div:hover ~ div {
+  color: gray; /* Color of inactive stars on hover */
+}
+
+.stars-container :before {
   content: '\2605'; /* Unicode character for a star */
 }
 
-.star-rating input[type="radio"]:checked ~ label {
+.stars-container :after {
   color: gray; /* Color of inactive stars */
 }
 
-#save-icon {
-  color: white;
+/* Temporarily disabled */
+/* #save-icon {
+  color: rgb(0, 0, 0);
   cursor: pointer;
-}
+} */
 
 /* Profile Page */
 
