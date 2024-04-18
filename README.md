@@ -129,7 +129,7 @@ For this deliverable I used webSocket to update the ratings on the frontend in r
 
 For this deliverable I converted the application over to use Vue. I know it is supposed to use React, but the instructor said I could use Vue because I already have extensive experience with React.
 
-- [ ] **Bundled and transpiled**
-- [ ] **Components**
-- [ ] **Router**
-- [ ] **Hooks**
+- [x] **Bundled and transpiled** - Bundled and run using vite.
+- [x] **Components** - landing, about, login/sign-in, and feed react components.
+- [x] **Router** - browserRouter routes correctly to each individual Navlink.
+- [x] **Hooks** - useState hooks to render posts, setSocket, display post form, and set username correctly.
