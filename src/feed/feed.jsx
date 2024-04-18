@@ -139,6 +139,7 @@ function sortPostsByRatings(posts) {
           <label htmlFor="postContent">Enter your post:</label><br />
           <textarea id="postContent" rows="4" cols="50"></textarea><br />
           <button type="button" onClick={create_post}>Confirm</button>
+          <button type="button" onClick={toggleForm}>Cancel</button>
         </form>
       </div> : ''}
       <div id="feed" className="feed-background">{PostsList}</div>
