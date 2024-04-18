@@ -23,11 +23,12 @@ export default function App() {
         method: 'DELETE',
         headers: {'content-type': 'application/json'},
       });
+      setUserName('')
     } catch {
       // If there was an error then just track scores locally
       console.log('Unable to log out user');
     }
-    navigate("/landing");
+    navigate("/");
   }
 
   return (
@@ -82,8 +83,8 @@ export default function App() {
         <Routes>
           <Route path='/' element={<Landing />} exact />
           <Route path='/login' element={<Login setUserName={setUserName}/>} />
-          <Route path='/sign-in' element={<SignIn />} />
-          <Route path='/feed' element={<MainFeed />} />
+          <Route path='/sign-in' element={<SignIn setUserName={setUserName}/>} />
+          <Route path='/feed' element={<MainFeed userName={userName}/>} />
           <Route path='/about' element={<About />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
