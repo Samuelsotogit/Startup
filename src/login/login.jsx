@@ -1,9 +1,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export function Login() {
+export function Login({setUserName}) {
   const navigate = useNavigate();
   function goBack() {
+    // navigate(-1);
     window.history.back();
   }
   async function login() {
@@ -28,10 +29,9 @@ export function Login() {
     });
     if (response.ok) {
       localStorage.setItem('userName', user.username);
-      // window.location.href="main-feed.html";
+      setUserName(user.username)
       navigate("/feed")
     }
-    // configureWebSocket()
   }
 
   return (

@@ -1,5 +1,73 @@
 import React, { useState, useEffect } from 'react';
 
+
+// export function Scores() {
+//   const [scores, setScores] = React.useState([]);
+
+//   // Demonstrates calling a service asynchronously so that
+//   // React can properly update state objects with the results.
+//   React.useEffect(() => {
+//     fetch('/api/post')
+//       .then((response) => response.json())
+//       .then((scores) => {
+//         setScores(scores);
+//         localStorage.setItem('scores', JSON.stringify(scores));
+//       })
+//       .catch(() => {
+//         const scoresText = localStorage.getItem('scores');
+//         if (scoresText) {
+//           setScores(JSON.parse(scoresText));
+//         }
+//       });
+//   }, []);
+
+//   // Demonstrates rendering an array with React
+//   const scoreRows = [];
+// if (scores.length) {
+//   for (const [i, score] of scores.entries()) {
+//     scoreRows.push(
+//       <div className="post-inner-container">
+//         <p className="text-container">{post.userName}: {post.postContent}</p>
+//         <div className="stars-container" data-post-id={post._id}>
+//           <div onClick={() => handleStarClick(1, post._id)}> </div>
+//           <div onClick={() => handleStarClick(2, post._id)}> </div>
+//           <div onClick={() => handleStarClick(3, post._id)}> </div>
+//           <div onClick={() => handleStarClick(4, post._id)}> </div>
+//           <div onClick={() => handleStarClick(5, post._id)}> </div>
+//         </div>
+//       </div>
+//       <div className="post-rating-container">
+//         <span className="average-rating">Rating: {typeof post.rating === 'number' ? post.rating.toFixed(1) : 'N/A'}</span><br /> {/* Display the average rating */}
+//       </div>
+//     );
+//   }
+// } else {
+//   scoreRows.push(
+//     <tr key='0'>
+//       <td colSpan='4'>Be the first to score</td>
+//     </tr>
+//   );
+// }
+
+
+//   return (
+//     <main className='container-fluid bg-secondary text-center'>
+//       <table className='table table-warning table-striped-columns'>
+//         <thead className='table-dark'>
+//           <tr>
+//             <th>#</th>
+//             <th>Name</th>
+//             <th>Score</th>
+//             <th>Date</th>
+//           </tr>
+//         </thead>
+//         <tbody id='scores'>{scoreRows}</tbody>
+//       </table>
+//     </main>
+//   );
+// }
+
+
 export function MainFeed() {
   const [posts, setPosts] = useState([]);
   const [socket, setSocket] = useState(null);
